@@ -67,30 +67,7 @@ export default function ProfileDropdown() {
           <span className="p-item-icon">{isCertificateUnlocked ? '🎓' : '🔒'}</span>
           <span>{isCertificateUnlocked ? 'Course Certificate' : 'Certificate (Locked)'}</span>
         </button>
-        <button
-          type="button"
-          className="profile-dropdown-item"
-          onClick={(e) => {
-            e.stopPropagation();
-            downloadProgress();
-            setIsOpen(false);
-          }}
-        >
-          <span className="p-item-icon">📥</span>
-          <span>Download Progress</span>
-        </button>
-        <button
-          type="button"
-          className="profile-dropdown-item"
-          onClick={(e) => {
-            e.stopPropagation();
-            resetProgress();
-            setIsOpen(false);
-          }}
-        >
-          <span className="p-item-icon">↺</span>
-          <span>Reset Progress</span>
-        </button>
+
         <div className="profile-dropdown-divider" />
         <button
           type="button"
