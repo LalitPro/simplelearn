@@ -1,0 +1,4617 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Seekho — Basic Computer Course</title>
+<meta name="description" content="हिंदी में कंप्यूटर सीखो — बिल्कुल शुरू से, इंटरएक्टिव गतिविधियों और रियल सिमुलेटर के साथ।">
+<meta name="theme-color" content="#14213d">
+
+<!-- PWA Manifest & Offline Support -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Favicon & Touch Icons -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<!-- Open Graph / WhatsApp / Facebook Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Computer Seekho — Basic Computer Course">
+<meta property="og:description" content="हिंदी में कंप्यूटर सीखो — बिल्कुल शुरू से, इंटरएक्टिव गतिविधियों और रियल सिमुलेटर के साथ।">
+<meta property="og:image" content="assets/logo.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Seekho — Basic Computer Course">
+<meta name="twitter:description" content="हिंदी में कंप्यूटर सीखो — बिल्कुल शुरू से, इंटरएक्टिव गतिविधियों और रियल सिमुलेटर के साथ।">
+<meta name="twitter:image" content="assets/logo.png">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap">
+<style>
+:root{--ink:#14213d;--bg:#f6f4ee;--card:#fff;--line:#d9d5c7;--y:#ffc233;--g:#1b7f5c;--r:#c0392b;--mut:#5d6479}
+*{box-sizing:border-box}
+body{margin:0;font:18px/1.6 Hind,"Noto Sans Devanagari",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+header{background:var(--ink);color:#fff;padding:10px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5}
+header b{font-size:20px;cursor:pointer}header span{margin-left:auto;font-size:15px;opacity:.85}
+main{max-width:760px;margin:0 auto;padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:0 0 16px}
+h1{font-size:30px;line-height:1.25;margin:.2em 0}h2{font-size:22px;margin:0 0 8px}h3{margin:0}
+.btn{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:10px 20px;font-weight:700;transition:transform .15s ease,box-shadow .15s ease,background .2s ease}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px rgba(20,33,61,0.15)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn.y{background:var(--y);color:var(--ink)}.btn.o{background:none;color:var(--ink);border:2px solid var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input,select{width:100%;padding:10px;border:2px solid var(--line);border-radius:8px;background:#fff;transition:border-color .2s ease,box-shadow .2s ease}
+input:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(20,33,61,0.1)}
+.hero{background:linear-gradient(135deg,#14213d 0%,#1e325c 100%);color:#fff;border-radius:10px;padding:26px 22px;margin-bottom:16px;box-shadow:0 6px 20px rgba(20,33,61,0.12)}
+.hero p{opacity:.85;margin:0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;gap:4px;box-shadow:0 4px 12px rgba(20,33,61,0.04)}
+.stat-card small{font-size:12px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.stat-card strong{font-size:24px;line-height:1.1}
+.stat-card span{font-size:13px;color:var(--mut)}
+.resume-strip{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff9e6;border:1px solid rgba(255,194,51,0.8);border-radius:10px;padding:12px 14px;margin:12px 0 18px}
+.resume-strip strong{display:block;font-size:16px}
+.resume-strip span{color:var(--mut);font-size:14px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:var(--g);position:relative;overflow:hidden;transition:width .5s cubic-bezier(0.16,1,0.3,1)}
+.bar i::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);animation:barShimmer 2.4s infinite}
+@keyframes barShimmer{0%{left:-100%}100%{left:100%}}
+.lrow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;transition:transform .2s cubic-bezier(0.16,1,0.3,1),border-color .2s,box-shadow .2s}
+.lrow:hover:not(:disabled){border-color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 18px rgba(20,33,61,0.08)}
+.lrow .n{width:44px;height:44px;border-radius:50%;background:var(--y);display:grid;place-items:center;font-weight:700;flex:none;transition:transform .2s ease}
+.lrow:hover:not(:disabled) .n{transform:scale(1.1) rotate(4deg)}
+.lrow.done .n{background:var(--g);color:#fff}
+.lrow:disabled{opacity:.5;cursor:default}
+.lrow small{color:var(--mut);display:block;line-height:1.3}
+.part{margin:22px 0 8px;font-size:15px;color:var(--mut);font-weight:700}
+ul{padding-left:22px;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:middle}
+th{background:#efece2;font-weight:700}
+td{white-space:normal}
+table td img,table th img,table .ti img,table .ti .ill-img{width:38px!important;height:38px!important;min-width:38px!important;max-width:38px!important;max-height:38px!important;object-fit:cover!important;border-radius:6px!important;display:inline-block!important;vertical-align:middle!important}
+.sp{background:none;border:2px solid var(--ink);border-radius:20px;padding:2px 14px;font-size:15px;float:right;transition:all .2s ease}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:10px 14px;background:#fff;border:2px solid var(--line);border-radius:8px;transition:transform .15s ease,border-color .2s ease,background .2s ease,box-shadow .15s ease}
+.opt:hover:not(.ok):not(.no){border-color:var(--ink);transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+.opt:active{transform:scale(0.99)}
+.opt.ok{background:#dff3ea;border-color:var(--g);animation:correctPop .35s ease-out}
+.opt.no{background:#fbe3e0;border-color:var(--r);animation:headShake .4s ease-in-out}
+@keyframes correctPop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes headShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.fb{margin-top:8px;font-size:16px;min-height:1px}
+.fb.fb-enter{animation:fbPop .3s ease-out}
+@keyframes fbPop{0%{transform:scale(0.95);opacity:0}100%{transform:scale(1);opacity:1}}
+.ipo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;text-align:center}
+.ipo div{border:2px solid var(--ink);border-radius:8px;padding:8px;transition:all .35s ease}
+.ipo div.on{background:var(--y);transform:scale(1.06);box-shadow:0 0 16px rgba(255,194,51,0.55)}
+.ipo small{display:block;font-weight:700}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.cmp{color:var(--mut);font-size:15px}
+/* ====== WINDOWS DESKTOP SIMULATOR & ASSIGNMENT SYSTEM ====== */
+.sim-assign-box{margin:10px 0}
+.sim-lock-banner{background:#fff3cf;border:2px solid var(--y);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:15px;display:flex;align-items:center;gap:10px;transition:all .3s ease;line-height:1.4}
+.sim-lock-banner.unlocked{background:#dff3ea;border-color:var(--g);color:#11573e;box-shadow:0 4px 16px rgba(27,127,92,0.15)}
+.sim-tasks-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.sim-tasks-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-weight:700;font-size:15px}
+.task-item{display:flex;align-items:flex-start;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:#fff;gap:10px;transition:all .2s ease}
+.task-item.done{border-color:var(--g);background:#f2faf6}
+.task-item-main{flex:1}
+.task-item-desc{font-size:15px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
+.task-item-hint{font-size:13px;color:var(--mut);margin-top:2px}
+.task-badge{font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;background:#ece9df;color:var(--mut);white-space:nowrap}
+.task-item.done .task-badge{background:var(--g);color:#fff}
+.desk-box{height:380px;background:linear-gradient(135deg,#1d4e89 0%,#2a9d8f 100%);position:relative;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;padding:10px;user-select:none;overflow:hidden;border:2.5px solid #14213d;border-radius:16px}
+.ic{width:84px;text-align:center;color:#fff;font-size:14px;line-height:1.2;padding:6px 2px;border-radius:6px;cursor:pointer;word-break:break-word;transition:all .15s ease}
+.ic span{font-size:34px;display:block;transition:transform .2s ease}.ic:hover span{transform:scale(1.1)}
+.ic.sel{background:rgba(255,255,255,.28);outline:1px solid #fff}
+.taskbar{background:#11151f;color:#fff;border-radius:0 0 8px 8px;padding:6px 12px;display:flex;align-items:center;font-size:14px;gap:10px;border:1px solid #11151f}
+.start-btn{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:6px;padding:4px 12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s}
+.start-btn:hover,.start-btn.open{background:var(--y);color:var(--ink);border-color:var(--y)}
+.tb-clock{margin-left:auto;font-family:monospace;font-size:13px;opacity:.9}
+.start-menu{position:absolute;bottom:48px;left:8px;width:290px;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border:1px solid #bbb;border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,0.3);display:none;z-index:20;padding:12px;animation:pop .2s ease-out}
+.start-menu.open{display:block}
+.start-head{display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.start-avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px}
+.start-user-name{font-weight:700;font-size:14px;line-height:1.2}
+.start-user-cls{font-size:12px;color:var(--mut)}
+.start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.start-app{padding:8px 4px;border-radius:8px;cursor:pointer;transition:background .15s;font-size:12px;font-weight:600;border:1px solid transparent}
+.start-app:hover{background:#eef4ff;border-color:#cfe3ff}
+.start-app span{font-size:28px;display:block;margin-bottom:2px}
+.sim-win{position:absolute;top:20px;left:20px;width:min(90%,340px);background:#fff;border:1px solid #555;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3);z-index:15;display:none;overflow:hidden}
+.sim-win.open{display:block;animation:pop .2s ease-out}
+.sim-win-bar{background:#1b1f2a;color:#fff;padding:6px 10px;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;user-select:none}
+.sim-win-close{cursor:pointer;padding:0 6px;border-radius:4px;font-weight:bold}
+.sim-win-close:hover{background:var(--r)}
+.sim-win-body{padding:8px}
+.sim-win-body textarea{width:100%;height:100px;font-family:monospace;border:1px solid var(--line);border-radius:4px;padding:6px;font-size:14px;resize:none}
+#cm{position:fixed;background:#fff;border:1px solid #888;box-shadow:2px 4px 10px rgba(0,0,0,0.25);display:none;z-index:30;min-width:160px;border-radius:6px;overflow:hidden}
+#cm div{padding:7px 14px;font-size:14px;cursor:pointer;transition:background .15s ease}#cm div:hover{background:#cfe3ff}
+.task{padding:4px 0;transition:all .2s ease}.task.ok{color:var(--g);font-weight:700}
+@media(max-width:500px){h1{font-size:25px}.ipo{grid-template-columns:1fr}.desk-box{height:320px}}
+/* lesson player */
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}.top .btn{padding:6px 12px}
+.dots{display:flex;gap:6px;width:100%}.dots i{flex:1;height:8px;border-radius:4px;background:var(--line)}.dots i.d{background:var(--g)}.dots i.c{background:var(--y)}
+.ill svg{width:min(240px,85%);max-height:220px;display:block;margin:10px auto;animation:floatIll 3.5s ease-in-out infinite;transition:transform .25s cubic-bezier(0.16,1,0.3,1)}
+.ill svg:hover{transform:scale(1.05)}
+.ill img,.ill .ill-img{width:auto!important;max-width:min(340px,85%)!important;max-height:220px!important;height:auto!important;object-fit:contain!important;border-radius:18px!important;border:2.5px solid #14213d!important;box-shadow:4px 5px 0 #14213d!important;display:block!important;margin:10px auto!important;animation:floatIll 3.5s ease-in-out infinite;transition:transform .25s cubic-bezier(0.16,1,0.3,1),box-shadow .25s}
+.ill img:hover,.ill .ill-img:hover{transform:scale(1.03);box-shadow:5px 7px 0 #14213d}
+.card img,.stage img,#stepCard img,.step-activity-box img{max-width:100%;box-sizing:border-box}
+.stage p,.step-activity-box p,#stepCard p,.part-objective-banner p{font-weight:550!important;color:#14213d;line-height:1.65;font-size:18.5px}
+.stage ul li,.step-activity-box ul li,#stepCard ul li{font-weight:550!important;color:#1f2937;line-height:1.6;font-size:17.5px}
+.stage p b,.step-activity-box p b,.part-objective-banner b{font-weight:750!important}
+@keyframes floatIll{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.big{font-size:26px;font-weight:700;color:var(--g)}
+.gal{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:12px 0}
+.gal figure{margin:0;width:130px;text-align:center}
+.gal svg{width:100%;background:#efece2;border-radius:10px;transition:transform .25s ease,box-shadow .25s ease}
+.gal figure .ill-img,.gal figure img{width:100%!important;height:85px!important;max-height:85px!important;object-fit:cover!important;border-radius:10px;border:2px solid #14213d;box-shadow:2px 3px 0 #14213d;display:block;margin-bottom:6px;transition:transform .2s ease}
+.gal figure:hover .ill-img,.gal figure:hover img{transform:translateY(-3px);box-shadow:3px 5px 0 #14213d}
+.gal figure:hover svg{transform:translateY(-4px) scale(1.04);box-shadow:0 6px 16px rgba(20,33,61,0.12)}
+.gal figcaption{font-size:15px}
+.nav{position:sticky;bottom:0;background:var(--bg);display:flex;gap:8px;align-items:center;padding:12px 0;flex-wrap:wrap}.nav .btn.y{margin-left:auto}.nav input{width:auto}
+.opt.wi{display:flex;align-items:center;gap:14px;overflow:hidden}
+.opt.wi img,.opt.wi .ill-img,.opt img,.opt .ill-img{width:90px;height:70px;min-width:90px;max-width:90px;max-height:70px;object-fit:cover;flex:none;border-radius:10px;border:2px solid #14213d;background:#efece2;box-shadow:2px 2px 0 rgba(20,33,61,0.15);display:block;transition:transform .2s ease}
+.opt.wi svg{width:90px;height:70px;min-width:90px;max-width:90px;flex:none;background:#efece2;border-radius:10px;border:2px solid #14213d;transition:transform .2s ease}
+.opt.wi:hover img,.opt.wi:hover .ill-img,.opt.wi:hover svg{transform:scale(1.04)}
+.opt small{display:block;color:var(--mut)}.opt.sel{border-color:var(--ink);background:#fff3cf}
+.qq{margin-top:16px}
+.ti{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;min-width:38px!important;max-width:38px!important;max-height:38px!important;overflow:hidden!important;margin-right:8px!important;vertical-align:middle!important;border-radius:6px!important;background:#efece2!important;border:1.5px solid #14213d!important;flex-shrink:0!important}
+.ti svg,.ti img,.ti .ill-img{width:100%!important;height:100%!important;max-width:38px!important;max-height:38px!important;object-fit:cover!important;display:block!important;margin:0!important}
+textarea{width:100%;padding:10px;border:2px solid var(--line);border-radius:8px;font:inherit}
+@media(min-width:900px){main{max-width:900px}.stage{font-size:20px}}
+/* mouse activities */
+.sim{position:relative;height:240px;background:linear-gradient(135deg,#1d4e89,#2a9d8f);border-radius:8px;padding:10px;overflow:hidden;margin:10px 0}
+.menu{display:none;position:absolute;background:#fff;color:var(--ink);border:1px solid #888;box-shadow:2px 4px 10px #0004;min-width:160px;z-index:3}.menu div{padding:6px 14px;cursor:pointer;font-size:15px;transition:background .15s ease}.menu div:hover{background:#cfe3ff}
+.scr{height:220px;overflow:auto;border:2px solid var(--ink);border-radius:8px;margin:10px 0}.sec{height:150px;padding:14px;border-bottom:1px solid var(--line)}
+.ddw{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:10px 0}.fl{background:#fff3cf;border:2px dashed var(--ink);border-radius:8px;padding:12px 16px;cursor:grab;transition:transform .2s ease,box-shadow .2s ease}
+.fl:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.dz{border:3px dashed var(--mut);border-radius:10px;padding:16px;min-width:210px;min-height:90px;text-align:center;transition:all .2s ease}
+.dz.hot{border-color:var(--g);background:#dff3ea;animation:dropHotPulse .8s infinite alternate}
+@keyframes dropHotPulse{0%{transform:scale(1);border-color:var(--g)}100%{transform:scale(1.02);border-color:#146949;box-shadow:0 0 14px rgba(27,127,92,0.25)}}
+.dz small{display:block;color:var(--mut)}
+/* keyboard activities */
+.kbs,.tabs,.vk{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.kbs .opt{width:auto;margin:0}
+.kd{border:2px solid var(--ink);border-radius:8px;padding:12px;margin:10px 0;min-height:110px}
+kbd{display:inline-block;border:2px solid var(--ink);border-bottom-width:4px;border-radius:6px;padding:2px 10px;margin:3px;background:#fff;font-family:monospace}
+.tg{font:700 34px monospace;letter-spacing:4px;margin:10px 0;word-break:break-all}.tg .gd{color:var(--g)}.tg .bd{color:var(--r);text-decoration:underline}#ti{font:700 24px monospace;letter-spacing:3px}
+.vk{gap:6px}.key{min-width:40px;padding:8px;border:2px solid var(--ink);border-bottom-width:4px;border-radius:6px;background:#fff;transition:transform .1s ease,background .15s ease}
+.key:hover{transform:translateY(-1px)}
+.key.wide{padding:8px 12px}.key:active{transform:scale(0.94) translateY(2px);background:var(--y)}
+.edt{min-height:90px;border:2px solid var(--ink);border-radius:8px;padding:10px;font:22px/1.5 monospace;background:#fff;word-break:break-all}.cur{color:var(--r)}
+@media(prefers-reduced-motion:no-preference){.cur{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}}
+/* pointer activities */
+.ic small{display:block;font-size:12px}
+.tgt{display:grid;grid-template-columns:repeat(3,72px);gap:10px;margin:10px 0}
+.shp{font-size:40px;height:72px;border:2px solid var(--line);border-radius:10px;background:#fff;line-height:1;transition:transform .15s ease,border-color .15s ease,background .15s ease}
+.shp:hover{border-color:var(--ink);transform:scale(1.1)}.shp:active{transform:scale(0.92)}.shp.no{background:#fbe3e0;border-color:var(--r);animation:headShake .35s ease-in-out}
+
+/* Confetti Celebration */
+.confetti-holder{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti{position:absolute;top:-20px;border-radius:2px;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}80%{opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:0}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .confetti-holder{display:none!important}
+}
+
+/* ====== KARAOKE READ-ALONG CAPTIONS & DUO-STYLE PLAYER (From Reference) ====== */
+.lesson-player-wrap{max-width:460px;margin:12px auto 28px;width:100%;border:3px solid #14213d;border-radius:24px;box-shadow:5px 7px 0 #14213d;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column}
+.player-top-header{background:#005bb5;color:#fff;border-bottom:2.5px solid #14213d;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.player-top-row{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:nowrap}
+.lang-pill{background:#ffffff;color:#14213d;border:2.5px solid #14213d;font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;box-shadow:0 2px 0 rgba(0,0,0,0.18);transition:transform .1s;flex-shrink:0}
+.lang-pill:hover{background:#f8fafc}
+.lang-pill:active{transform:translateY(1px)}
+.coin-pill{background:#facc15;color:#14213d;border:2.5px solid #14213d;font-size:13px;font-weight:900;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;box-shadow:0 2px 0 rgba(0,0,0,0.18);flex-shrink:0}
+.audio-ctrl-pill{background:#ffffff;color:#14213d;border:2.5px solid #14213d;border-radius:999px;display:inline-flex;align-items:center;padding:3px 8px;gap:2px;box-shadow:0 2px 0 rgba(0,0,0,0.18);flex-shrink:0}
+.actrl-sep{width:1.5px;height:14px;background:#cbd5e1;margin:0 3px;display:inline-block}
+.actrl-btn{background:none;border:none;color:#14213d;padding:3px 6px;font-size:14px;font-weight:800;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s,transform .1s,color .15s}
+.actrl-btn:hover{background:#f1f5f9;color:#005bb5}
+.actrl-btn:active{transform:scale(0.92)}
+.actrl-btn.playing{color:#005bb5}
+.speed-btn{font-family:inherit;font-size:12px;font-weight:900;padding:2px 5px;color:#005bb5}
+
+/* Next button reveal strictly after audio completion */
+.round-next-btn.hidden-for-audio{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;transform:scale(0.5) !important}
+@keyframes nextBtnPop{0%{transform:scale(0.2) rotate(-15deg);opacity:0}60%{transform:scale(1.18) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
+.round-next-btn.pop-in{animation:nextBtnPop 0.45s cubic-bezier(0.175,0.885,0.32,1.275) both !important}
+
+/* ====== MODERN CONCEPT CARDS & RICH ANIMATED CONTENT ====== */
+.concept-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin: 14px 0 10px;
+  box-sizing: border-box;
+}
+.concept-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 2px solid #14213d;
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 2.5px 3.5px 0 #14213d;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, background 0.2s ease;
+  text-align: left;
+  user-select: none;
+}
+.concept-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3.5px 5.5px 0 #14213d;
+  background: #fffdf5;
+}
+.concept-card-icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #f1ede2;
+  border-radius: 10px;
+  border: 1.5px solid #14213d;
+  transition: transform 0.25s ease;
+}
+.concept-card:hover .concept-card-icon {
+  transform: scale(1.15) rotate(5deg);
+  background: #ffe382;
+}
+.concept-card-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #14213d;
+  line-height: 1.35;
+}
+
+/* Example Callout Banner */
+.example-highlight-card {
+  width: 100%;
+  background: #fff9e6;
+  border: 2px solid #ffc233;
+  border-left: 5px solid #ffc233;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  text-align: left;
+  box-shadow: 2px 3px 0 rgba(20, 33, 61, 0.1);
+  box-sizing: border-box;
+}
+.example-badge {
+  font-size: 12px;
+  font-weight: 900;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.example-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #14213d;
+  line-height: 1.4;
+}
+
+/* Stagger Entrance Animation */
+@keyframes conceptSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.stagger-anim {
+  animation: conceptSlideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Gentle Floating Micro-Animation for Illustrations */
+@keyframes illFloating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3.5px); }
+}
+.ill svg, .ill img {
+  animation: illFloating 3.6s ease-in-out infinite;
+}
+
+/* ====== PC / DESKTOP RESPONSIVE OPTIMIZATIONS ====== */
+@media (min-width: 768px) {
+  main {
+    max-width: 980px !important;
+    padding: 24px 20px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Course Home Desktop Topbar */
+  .course-home-topbar {
+    padding: 12px 22px !important;
+    border-radius: 20px !important;
+    margin-bottom: 20px !important;
+  }
+  .user-avatar {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 20px !important;
+  }
+  .user-name {
+    font-size: 17px !important;
+  }
+  .user-cls {
+    font-size: 13px !important;
+  }
+  .user-stat-pill {
+    padding: 6px 16px !important;
+    font-size: 15px !important;
+    border-radius: 999px !important;
+  }
+
+  /* Course Home Desktop Hero */
+  .course-home-hero {
+    border-radius: 26px !important;
+    margin-bottom: 22px !important;
+    padding: 24px 30px !important;
+  }
+  .course-hero-content {
+    padding: 0 !important;
+  }
+  .course-hero-content h1 {
+    font-size: 28px !important;
+  }
+
+  /* Course Home Desktop Tabs */
+  .parts-nav-tabs-wrapper {
+    margin: 16px 0 20px !important;
+  }
+  .parts-nav-tabs {
+    gap: 10px !important;
+    padding: 6px 2px 14px !important;
+  }
+  .part-nav-btn {
+    font-size: 14px !important;
+    padding: 10px 18px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Course Home Desktop Part Card & 2-Col Lessons Grid */
+  .part-card {
+    border-radius: 26px !important;
+  }
+  .part-banner-wrap {
+    height: 240px !important;
+  }
+  .part-card .part-title-row {
+    padding: 18px 24px 12px !important;
+  }
+  .part-title-row .part {
+    font-size: 20px !important;
+  }
+  .part-lessons-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    padding: 10px 20px 20px !important;
+  }
+  .part-lessons-list .lrow {
+    margin-bottom: 0 !important;
+    padding: 14px 16px !important;
+    border-radius: 16px !important;
+    min-height: 74px !important;
+    box-sizing: border-box !important;
+  }
+  .part-lessons-list .lrow h3 {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    margin: 0 0 4px !important;
+  }
+  .part-lessons-list .lrow small {
+    font-size: 13px !important;
+  }
+  .part-lessons-list .lrow .n {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 16px !important;
+  }
+
+  /* Desktop Lesson Player */
+  .lesson-player-wrap {
+    max-width: 820px !important;
+    border-radius: 28px !important;
+    box-shadow: 7px 9px 0 #14213d !important;
+    margin: 14px auto 32px !important;
+  }
+  .player-top-header {
+    padding: 14px 20px !important;
+  }
+  .stage {
+    min-height: 500px !important;
+    padding: 28px 36px 20px !important;
+  }
+  .step-activity-box {
+    max-width: 720px !important;
+    width: 100% !important;
+  }
+  .ill .ill-img {
+    max-width: 400px !important;
+    max-height: 260px !important;
+    border-radius: 20px !important;
+  }
+  .ill svg {
+    max-width: 300px !important;
+    max-height: 240px !important;
+  }
+  .karaoke-card {
+    max-width: 680px !important;
+    font-size: 19px !important;
+    line-height: 1.6 !important;
+    padding: 16px 26px !important;
+    margin: 16px auto 10px !important;
+  }
+  .round-next-btn {
+    width: 68px !important;
+    height: 68px !important;
+    font-size: 36px !important;
+    margin: 8px auto 2px !important;
+  }
+
+  /* Quiz on Desktop */
+  .quiz-container {
+    max-width: 640px !important;
+    width: 100% !important;
+  }
+  .quiz-options-list {
+    gap: 12px !important;
+  }
+  .quiz-options-list .opt {
+    font-size: 16px !important;
+    padding: 14px 18px !important;
+    border-radius: 14px !important;
+  }
+  .opt.wi img, .opt.wi .ill-img, .opt img, .opt .ill-img {
+    width: 104px !important;
+    height: 78px !important;
+    min-width: 104px !important;
+    max-width: 104px !important;
+  }
+  .opt.wi svg {
+    width: 104px !important;
+    height: 78px !important;
+    min-width: 104px !important;
+    max-width: 104px !important;
+  }
+
+  /* Desktop Simulator Lab */
+  .desk-box {
+    height: 500px !important;
+    border-radius: 16px !important;
+  }
+  .welcome-wrap {
+    max-width: 600px !important;
+  }
+  .welcome-hero-img {
+    height: 240px !important;
+  }
+}
+
+@media (min-width: 1140px) {
+  main {
+    max-width: 1040px !important;
+  }
+  .lesson-player-wrap {
+    max-width: 860px !important;
+  }
+  .step-activity-box {
+    max-width: 760px !important;
+  }
+  .stage {
+    min-height: 520px !important;
+    padding: 32px 42px 24px !important;
+  }
+  .karaoke-card {
+    max-width: 720px !important;
+    font-size: 20px !important;
+  }
+  .desk-box {
+    height: 540px !important;
+  }
+}
+
+/* Progress sub-row */
+.player-sub-row{display:flex;align-items:center;gap:8px}
+.level-badge{background:#e63946;color:#fff;font-size:13px;font-weight:800;padding:4px 10px;border-radius:8px;border:2.5px solid #14213d;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,0.18);flex-shrink:0}
+.level-badge:hover{background:#dc2626}
+.striped-bar-container{flex:1;height:16px;background:#fff;border:2.5px solid #14213d;border-radius:999px;overflow:hidden;position:relative}
+.striped-bar-fill{height:100%;background:repeating-linear-gradient(-45deg,#f59e0b,#f59e0b 10px,#fef08a 10px,#fef08a 20px);transition:width .4s cubic-bezier(0.16,1,0.3,1);border-radius:999px}
+.cc-bubble-btn{background:#facc15;border:2.5px solid #14213d;border-radius:8px;padding:3px 9px;font-size:15px;cursor:pointer;font-weight:700;display:grid;place-items:center;box-shadow:0 2px 0 rgba(0,0,0,0.18);transition:all .15s;flex-shrink:0}
+.cc-bubble-btn:hover{background:#fbbf24}
+.cc-bubble-btn.off{background:#e2e8f0;opacity:.6}
+
+/* Stage with dot grid */
+.stage{background-color:#faf7f0;background-image:radial-gradient(#d6cbb5 1.4px,transparent 1.4px);background-size:18px 18px;border:none;border-radius:0;box-shadow:none;padding:20px 16px 20px;min-height:500px;transition:min-height .2s ease;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;position:relative;box-sizing:border-box}
+.stage.stage-enter{animation:stageEnter .3s cubic-bezier(0.16,1,0.3,1)}
+@keyframes stageEnter{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
+
+/* Neo-Brutalist Karaoke Caption Card */
+.karaoke-card{background:#ffffff;border:2.5px solid #14213d;border-radius:18px;box-shadow:3.5px 5px 0 #14213d;padding:18px 20px;margin:16px auto 10px;max-width:420px;width:100%;text-align:center;font-size:17px;line-height:1.6;font-weight:700;color:#526071;transition:all .2s ease;animation:pop .25s ease-out;position:relative;word-spacing:1px;box-sizing:border-box}
+.karaoke-card.hidden{display:none}
+.k-word{color:#526071;transition:color 0.15s ease;display:inline-block;margin:0 2px}
+.k-word.active{color:#2563eb;font-weight:800}
+
+/* Big Round Next Button */
+.round-next-btn{width:64px;height:64px;border-radius:50%;background:#facc15;border:3px solid #14213d;box-shadow:3px 5px 0 #14213d;display:grid;place-items:center;font-size:34px;font-weight:900;color:#14213d;margin:10px auto 4px;cursor:pointer;transition:transform .12s,box-shadow .12s,background .15s;user-select:none;flex-shrink:0}
+.round-next-btn:hover:not(:disabled){transform:translate(-1px,-1px);box-shadow:4px 6px 0 #14213d;background:#fbbf24}
+.round-next-btn:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 2px 0 #14213d}
+.round-next-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* ====== ENHANCED NAVIGATION & CONTROLS ====== */
+.top-nav{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.top-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.crumb{font-size:15px;color:var(--mut);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.crumb a{color:var(--ink);font-weight:700;text-decoration:none;cursor:pointer}
+.crumb a:hover{text-decoration:underline}
+.step-badge{background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:12px;white-space:nowrap}
+.quick-nav{display:flex;align-items:center;gap:6px}
+.quick-nav .btn{padding:5px 10px;font-size:14px}
+.quick-nav .btn:disabled{opacity:.3}
+
+/* Clickable step dots */
+.dots{display:flex;gap:6px;width:100%;align-items:center}
+.dot-btn{flex:1;height:12px;border-radius:6px;background:var(--line);border:none;padding:0;cursor:pointer;transition:transform .15s, background .2s, box-shadow .2s;position:relative}
+.dot-btn:hover{transform:scaleY(1.4);background:var(--ink)}
+.dot-btn.d{background:var(--g)}
+.dot-btn.c{background:var(--y);transform:scaleY(1.3);box-shadow:0 0 0 2px var(--ink)}
+.dot-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Enhanced bottom nav dock */
+.nav{position:sticky;bottom:0;background:var(--bg);box-shadow:0 -4px 14px rgba(0,0,0,0.06);display:flex;gap:8px;align-items:center;padding:12px 0;flex-wrap:wrap;z-index:4}
+.nav .sp.playing{background:var(--g);color:#fff;border-color:var(--g);animation:pulse-btn 1.5s infinite}
+@keyframes pulse-btn{0%,100%{box-shadow:0 0 0 0 rgba(27,127,92,.5)}50%{box-shadow:0 0 0 6px rgba(27,127,92,0)}}
+.btn.cc-toggle{background:none;border:2px solid var(--line);border-radius:20px;padding:4px 12px;font-size:14px;font-weight:700}
+.btn.cc-toggle.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.kbd-hint{font-size:12px;color:var(--mut);margin-left:auto;display:flex;gap:4px;align-items:center}
+@media(max-width:640px){.kbd-hint{display:none}}
+
+/* Course home quick jump tabs */
+.quick-jump-bar{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin:8px 0 16px;scrollbar-width:thin}
+.jump-tab{white-space:nowrap;background:var(--card);border:2px solid #14213d;box-shadow:2px 3px 0 #14213d;border-radius:20px;padding:6px 14px;font-size:14px;font-weight:700;text-decoration:none;color:var(--ink);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.jump-tab:hover{background:#fff;transform:translate(-1px,-1px);box-shadow:3px 4px 0 #14213d}
+.jump-tab:active{transform:translate(1px,1px);box-shadow:1px 2px 0 #14213d}
+.part-title-row{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}
+.part-title-row .part{margin:0;font-size:17px;font-weight:800;color:var(--ink)}
+.part-badge{font-size:13px;padding:3px 10px;border-radius:12px;background:#ece9df;color:var(--ink);font-weight:800;border:1.5px solid #14213d}
+.part-badge.done{background:#dff3ea;color:var(--g);border-color:var(--g)}
+
+/* Welcome & Course Visual Assets */
+.welcome-wrap{max-width:480px;margin:16px auto}
+.welcome-hero-card{background:var(--card);border:2.5px solid #14213d;border-radius:22px;box-shadow:4px 6px 0 #14213d;overflow:hidden;margin-bottom:18px}
+.welcome-hero-img{width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid #14213d}
+.welcome-hero-body{padding:18px 22px}
+.welcome-hero-body h1{margin:0 0 6px;font-size:26px}
+.welcome-hero-body p{margin:0;color:var(--mut);font-weight:600}
+
+.course-home-hero{background:linear-gradient(135deg,#0d47a1 0%,#1e3a8a 100%);color:#fff;border-radius:22px;border:2.5px solid #14213d;box-shadow:4px 6px 0 #14213d;overflow:hidden;margin-bottom:20px;padding:20px 22px}
+.course-hero-content{padding:0}
+.course-hero-content h1{margin:0 0 4px;font-size:26px}
+
+.part-card{background:var(--card);border:2.5px solid #14213d;border-radius:22px;box-shadow:4px 6px 0 #14213d;overflow:hidden;margin:0 0 22px;transition:transform .15s ease}
+.part-banner-wrap{width:100%;height:165px;overflow:hidden;position:relative;background:#faf7ee;border-bottom:2.5px solid #14213d}
+.part-banner-img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1)}
+.part-card:hover .part-banner-img{transform:scale(1.025)}
+.part-card .part-title-row{padding:14px 18px 8px;margin:0}
+.part-lessons-list{padding:4px 14px 14px}
+
+/* Completion modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,33,61,0.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:30;backdrop-filter:blur(3px)}
+.modal-card{background:var(--card);max-width:480px;width:100%;border-radius:16px;padding:26px;box-shadow:0 12px 30px rgba(0,0,0,0.25);text-align:center;animation:pop .25s ease-out}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-card h2{font-size:24px;margin-top:0}
+.modal-actions{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+
+/* Coin & Attempt Gamification Styles */
+@keyframes coinPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.35) rotate(-6deg); }
+  70% { transform: scale(1.15) rotate(4deg); }
+  100% { transform: scale(1); }
+}
+.coin-pill.bounce {
+  animation: coinPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+@keyframes flyCoinUp {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
+  20% { opacity: 1; transform: translate(-50%, -24px) scale(1.25); }
+  75% { opacity: 1; transform: translate(-50%, -65px) scale(1.08); }
+  100% { opacity: 0; transform: translate(-50%, -110px) scale(0.8); }
+}
+.coin-fly-badge {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  background: #facc15;
+  color: #14213d;
+  border: 2.5px solid #14213d;
+  font-size: 15px;
+  font-weight: 900;
+  padding: 6px 16px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: flyCoinUp 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.first-try-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #dcfce7;
+  color: #15803d;
+  border: 1.5px solid #15803d;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+  animation: correctPop 0.4s ease-out;
+}
+.attempt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+.sim-attempts-pill {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1.5px solid #94a3b8;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Star animations for assignments */
+.assign-modal-card {
+  max-width: 440px;
+  border: 3px solid #14213d;
+  border-radius: 24px;
+  box-shadow: 6px 8px 0 #14213d;
+  padding: 26px 20px;
+  background: #fff;
+  text-align: center;
+}
+.assign-stars-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 44px;
+}
+@keyframes starPop {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  70% { transform: scale(1.4) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.assign-star {
+  display: inline-block;
+  line-height: 1;
+}
+.star-anim-1 { animation: starPop 0.5s 0.1s both cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.star-anim-2 { animation: starPop 0.5s 0.3s both cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.star-anim-3 { animation: starPop 0.5s 0.5s both cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.assign-star.dim { filter: grayscale(1) opacity(0.35); }
+
+.assign-stats-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 14px 0;
+  text-align: center;
+}
+.assign-stat-item small {
+  display: block;
+  font-size: 11px;
+  color: var(--mut);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.assign-stat-item b {
+  font-size: 15px;
+  color: #14213d;
+}
+
+.assign-task-done-list {
+  text-align: left;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background: #fafaf9;
+}
+.assign-task-mini-done {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+.assign-task-mini-done:last-child {
+  border-bottom: none;
+}
+
+.task-item.pending-shake {
+  animation: headShake 0.5s ease-in-out;
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+
+.round-next-btn.shake {
+  animation: headShake 0.4s ease-in-out;
+}
+.round-next-btn.disabled, .round-next-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  filter: grayscale(0.5);
+  cursor: pointer;
+}
+
+.gamify-stats-strip {
+  background: #ffffff;
+  border: 2.5px solid #14213d;
+  border-radius: 16px;
+  box-shadow: 3px 4px 0 #14213d;
+  padding: 12px 16px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.gamify-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gamify-icon {
+  font-size: 26px;
+}
+.gamify-val {
+  font-size: 19px;
+  font-weight: 900;
+  color: #14213d;
+  line-height: 1.1;
+}
+.gamify-lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mut);
+}
+.gamify-sep {
+  width: 2px;
+  height: 32px;
+  background: var(--line);
+}
+
+
+/* Multi-question Sequential & Retry Styles */
+.quiz-container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: left;
+}
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.quiz-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #14213d;
+}
+.quiz-progress-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #14213d;
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.quiz-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid #cbd5e1;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.35s ease;
+  border-radius: 999px;
+}
+.quiz-card {
+  background: #ffffff;
+  border: 2.5px solid #14213d;
+  border-radius: 18px;
+  box-shadow: 4px 5px 0 #14213d;
+  padding: 20px;
+  animation: pop 0.25s ease-out;
+}
+.quiz-question-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 18px;
+  color: #14213d;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.q-num-badge {
+  background: #facc15;
+  color: #14213d;
+  border: 2px solid #14213d;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.quiz-options-list .opt {
+  margin: 0;
+  width: 100%;
+}
+.quiz-results-card {
+  background: #ffffff;
+  border: 3px solid #14213d;
+  border-radius: 22px;
+  box-shadow: 5px 7px 0 #14213d;
+  padding: 24px 20px;
+  text-align: center;
+  animation: pop 0.3s ease-out;
+}
+.quiz-review-list {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  background: #fafaf9;
+}
+.quiz-review-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+.quiz-review-item.done {
+  border-left: 4px solid #15803d;
+}
+.quiz-review-item.error {
+  border-left: 4px solid #dc2626;
+  background: #fef2f2;
+}
+
+
+/* Level Lock & Level Switcher Styles */
+.lrow.locked {
+  opacity: 0.65;
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  cursor: pointer;
+}
+.lrow.locked:hover {
+  border-color: #ef4444 !important;
+}
+.part-badge.locked-badge {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1.5px solid #cbd5e1;
+}
+
+.level-switcher-modal {
+  max-width: 540px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: 3px solid #14213d;
+  border-radius: 24px;
+  box-shadow: 6px 8px 0 #14213d;
+  background: #faf7f0;
+}
+.level-switcher-head {
+  background: #005bb5;
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2.5px solid #14213d;
+}
+.level-switcher-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #fff;
+  border-bottom: 2px solid #e2e8f0;
+}
+.level-tab-btn {
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .15s;
+}
+.level-tab-btn.active {
+  background: #facc15;
+  border-color: #14213d;
+  color: #14213d;
+  box-shadow: 0 2px 0 #14213d;
+}
+.level-switcher-list {
+  padding: 14px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.level-switch-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 2px solid #14213d;
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-shadow: 2px 3px 0 #14213d;
+  transition: transform .12s, box-shadow .12s;
+  text-align: left;
+}
+.level-switch-item:hover:not(.locked) {
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0 #14213d;
+}
+.level-switch-item.current {
+  border: 2.5px solid #f59e0b;
+  background: #fffbeb;
+}
+.level-switch-item.locked {
+  opacity: 0.6;
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  box-shadow: none;
+}
+.level-switch-num {
+  font-size: 14px;
+  font-weight: 900;
+  background: #f1f5f9;
+  border: 1.5px solid #14213d;
+  border-radius: 8px;
+  padding: 4px 8px;
+  min-width: 44px;
+  text-align: center;
+}
+.level-switch-item.done .level-switch-num {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #15803d;
+}
+.level-switch-item.current .level-switch-num {
+  background: #facc15;
+  color: #14213d;
+}
+.level-switch-item.locked .level-switch-num {
+  background: #e2e8f0;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+
+/* Course Home Profile + Coins Topbar */
+.course-home-topbar {
+  background: #ffffff;
+  border: 2.5px solid #14213d;
+  border-radius: 18px;
+  box-shadow: 3.5px 5px 0 #14213d;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+}
+.user-profile-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: background .2s ease;
+  user-select: none;
+}
+.user-profile-badge:hover,
+.user-profile-badge:focus-within {
+  background: rgba(20, 33, 61, 0.06);
+}
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: 2.5px solid #14213d;
+  box-shadow: 2px 2px 0 #14213d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  font-weight: 900;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+.user-name {
+  font-size: 16px;
+  font-weight: 900;
+  color: #14213d;
+  line-height: 1.2;
+}
+.user-cls {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mut);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Profile Hover Dropdown Menu */
+.profile-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  background: #ffffff;
+  border: 2.5px solid #14213d;
+  box-shadow: 0 10px 25px rgba(20, 33, 61, 0.2), 4px 6px 0 #14213d;
+  border-radius: 16px;
+  padding: 8px;
+  min-width: 230px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.user-profile-badge:hover .profile-dropdown-menu,
+.user-profile-badge:focus-within .profile-dropdown-menu,
+.profile-dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+.dropdown-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: 2px solid #14213d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.dropdown-user-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  color: #14213d;
+  line-height: 1.2;
+}
+.dropdown-user-cls {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mut);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+.profile-dropdown-divider {
+  height: 1.5px;
+  background: #e2e8f0;
+  margin: 6px 4px;
+}
+.profile-dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #14213d;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.profile-dropdown-item:hover {
+  background: #f1f5f9;
+  transform: translateX(2px);
+}
+.profile-dropdown-item.logout-item {
+  color: #dc2626;
+}
+.profile-dropdown-item.logout-item:hover {
+  background: #fef2f2;
+}
+.p-item-icon {
+  font-size: 16px;
+}
+.home-stats-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.user-stat-pill {
+  background: #f8fafc;
+  border: 2px solid #14213d;
+  border-radius: 999px;
+  box-shadow: 2px 2.5px 0 #14213d;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #14213d;
+  transition: transform .12s;
+}
+.user-stat-pill:hover {
+  transform: translateY(-1px);
+}
+.coin-stat-pill {
+  background: #fef9c3;
+  border-color: #14213d;
+}
+.star-stat-pill {
+  background: #fdf2f8;
+}
+.stat-unit {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  display: inline-block;
+}
+@media (max-width: 480px) {
+  .stat-unit {
+    display: none;
+  }
+  .user-name {
+    font-size: 14px;
+  }
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .opt.wi img, .opt.wi .ill-img, .opt img, .opt .ill-img {
+    width: 72px !important;
+    height: 56px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+  }
+  .opt.wi svg {
+    width: 72px !important;
+    height: 56px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+  }
+}
+
+
+/* Course Parts Tab Navigation (Modular View) */
+.parts-nav-tabs-wrapper {
+  margin: 14px 0 16px;
+}
+.parts-nav-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--mut);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.parts-nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.part-nav-btn {
+  background: #ffffff;
+  border: 2px solid #14213d;
+  border-radius: 14px;
+  box-shadow: 2px 3px 0 #14213d;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #14213d;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .15s ease;
+  flex-shrink: 0;
+}
+.part-nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0 #14213d;
+}
+.part-nav-btn.active {
+  background: #facc15;
+  border-color: #14213d;
+  box-shadow: 0 2px 0 #14213d;
+  transform: translateY(1px);
+}
+.part-nav-btn.done-tab {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #15803d;
+}
+.part-nav-btn.locked-tab {
+  opacity: 0.8;
+  background: #f8fafc;
+  color: #64748b;
+  border-color: #cbd5e1;
+  box-shadow: 1.5px 2px 0 #cbd5e1;
+}
+
+.part-view-pane {
+  display: none;
+  animation: pop .22s ease-out;
+}
+.part-view-pane.active {
+  display: block;
+}
+
+/* ====== ENHANCED WINDOWS SIMULATOR 2.0 STYLES ====== */
+.desk-box {
+  background: radial-gradient(circle at 50% 30%, #2563eb 0%, #1e3a8a 40%, #0f172a 100%) !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: wrap !important;
+  align-content: flex-start !important;
+  gap: 12px !important;
+  padding: 16px !important;
+  user-select: none !important;
+  overflow: hidden !important;
+  border: 2.5px solid #14213d !important;
+  border-bottom: none !important;
+  border-radius: 18px 18px 0 0 !important;
+  box-shadow: inset 0 2px 12px rgba(0,0,0,0.3) !important;
+}
+
+.desk-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(96, 165, 250, 0.4) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.ic {
+  width: 86px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 8px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  word-break: break-word;
+  transition: all .15s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  position: relative;
+  z-index: 2;
+}
+.ic span {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 4px;
+  transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.ic:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.ic:hover span {
+  transform: scale(1.12);
+}
+.ic.sel {
+  background: rgba(255, 255, 255, 0.3) !important;
+  outline: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 10px !important;
+}
+
+/* Modern Taskbar */
+.taskbar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #fff !important;
+  border-radius: 0 0 18px 18px !important;
+  padding: 8px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 14px !important;
+  gap: 10px !important;
+  border: 2.5px solid #14213d !important;
+  border-top: 1.5px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  z-index: 25 !important;
+  box-sizing: border-box !important;
+}
+.start-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.4) !important;
+  border-radius: 9px !important;
+  padding: 5px 14px !important;
+  font-weight: 800 !important;
+  font-size: 13.5px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25) !important;
+  transition: all .15s ease !important;
+}
+.start-btn:hover, .start-btn.open {
+  background: #3b82f6 !important;
+  border-color: #fff !important;
+  transform: translateY(-1px) !important;
+}
+.tb-running-apps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  margin-left: 8px;
+  overflow-x: auto;
+}
+.tb-app-pill {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+.tb-app-pill:hover, .tb-app-pill.active {
+  background: rgba(255,255,255,0.28);
+  border-color: #facc15;
+}
+.tb-systray {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Modern Start Menu */
+.start-menu {
+  position: absolute !important;
+  bottom: 48px !important;
+  left: 10px !important;
+  width: 320px !important;
+  max-width: 90% !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 2px solid #14213d !important;
+  border-radius: 16px !important;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.4) !important;
+  display: none;
+  z-index: 30 !important;
+  padding: 16px !important;
+  animation: pop .2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.start-menu.open {
+  display: block !important;
+}
+.start-search-bar {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.start-search-bar input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 13px;
+  outline: none;
+}
+.start-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px !important;
+  text-align: center !important;
+}
+.start-app {
+  padding: 10px 6px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  transition: all .15s ease !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  border: 1px solid transparent !important;
+}
+.start-app:hover {
+  background: #e2e8f0 !important;
+  transform: translateY(-2px) !important;
+  border-color: #94a3b8 !important;
+}
+.start-app span {
+  font-size: 30px !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+}
+
+/* Floating Window System */
+.sim-win {
+  position: absolute !important;
+  top: 24px !important;
+  left: 24px !important;
+  width: min(94%, 380px) !important;
+  background: #ffffff !important;
+  border: 2px solid #14213d !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35) !important;
+  z-index: 15 !important;
+  display: none;
+  overflow: hidden !important;
+  animation: pop .22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.sim-win.open {
+  display: block !important;
+}
+.sim-win.focused {
+  z-index: 20 !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45) !important;
+}
+.sim-win-bar {
+  background: #14213d !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  user-select: none !important;
+}
+.sim-win-ctrls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sim-win-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  transition: background .12s;
+}
+.sim-win-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+.sim-win-btn.close:hover {
+  background: #ef4444;
+}
+
+/* Calculator Window Styles */
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 10px;
+}
+.calc-screen {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: right;
+  font-size: 24px;
+  font-weight: 900;
+  font-family: monospace;
+  color: #14213d;
+  min-height: 36px;
+  margin: 10px 10px 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.calc-btn {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #14213d;
+  cursor: pointer;
+  transition: all .1s ease;
+}
+.calc-btn:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+.calc-btn:active {
+  transform: translateY(1px);
+}
+.calc-btn.op {
+  background: #fef08a;
+  border-color: #facc15;
+}
+.calc-btn.eq {
+  background: #facc15;
+  border-color: #ca8a04;
+  color: #14213d;
+}
+.calc-btn.clear {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+/* Paint Window Styles */
+.paint-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-bottom: 1.5px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+.paint-colors {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.paint-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #94a3b8;
+  cursor: pointer;
+  transition: transform .12s;
+}
+.paint-swatch.active {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 2px #14213d;
+}
+.paint-canvas-wrap {
+  padding: 8px;
+  background: #cbd5e1;
+  display: flex;
+  justify-content: center;
+}
+.paint-canvas {
+  background: #ffffff;
+  border: 1.5px solid #94a3b8;
+  border-radius: 6px;
+  cursor: crosshair;
+  display: block;
+  touch-action: none;
+}
+
+/* Explorer / Recycle Bin Window Styles */
+.exp-address-bar {
+  background: #f1f5f9;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.exp-items-list {
+  padding: 10px;
+  min-height: 140px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.exp-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.exp-item-row:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* In-Simulator Windows Dialog Modal */
+.sim-dialog-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pop .18s ease-out;
+}
+.sim-dialog-overlay.open {
+  display: flex;
+}
+.sim-dialog-card {
+  background: #ffffff;
+  border: 2.5px solid #14213d;
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+  width: min(92%, 340px);
+  overflow: hidden;
+  animation: pop .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sim-dialog-header {
+  background: #14213d;
+  color: #ffffff;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sim-dialog-body {
+  padding: 16px;
+}
+.sim-dialog-body input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #14213d;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 10px 0 14px;
+}
+.sim-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+</style>
+</head>
+<body>
+<main id="app"></main>
+<div id="cm"></div>
+
+<script src="/illustrations.js"></script>
+<script src="/lessons.js"></script>
+<script>
+/* ============ CONFIG ============ */
+const USE_AUDIO_FILES = true; // true => plays audio/<lessonId>-<n>.mp3, falls back to browser Hindi voice
+const COURSE_TITLE = "Basic Computer Course";
+const UNLOCK_ALL_LEVELS_FOR_TESTING = true; // Set to true to unlock all levels for testing
+
+/* ============ CONTENT: see lessons.js / illustrations.js ============ */
+const ALL=window.LESSONS || [];
+const I = window.I || {};
+const PN=[
+  "Part 01 — Meet the Computer",
+  "Part 02 — Know Your Computer",
+  "Part 03 — First Time Using Windows",
+  "Part 04 — Master the Mouse",
+  "Part 05 — Master the Keyboard",
+  "Part 06 — Files and Folders",
+  "Part 07 — Working with Documents",
+  "Part 08 — Internet and Web Browsing",
+  "Part 09 — Digital Safety and Responsible Use",
+  "Part 10 — Basic Computer Troubleshooting"
+];
+const PART_IMAGES = {
+  1: "assets/part-01-meet-computer.jpg",
+  2: "assets/part-02-know-computer.jpg",
+  3: "assets/part-03-meet-mouse.jpg",
+  4: "assets/part-04-master-mouse.jpg",
+  5: "assets/part-05-master-keyboard.jpg",
+  6: "assets/part-06-files-folders.jpg",
+  7: "assets/part-07-banner.jpg",
+  8: "assets/part-08-banner.jpg",
+  9: "assets/part-09-banner.jpg",
+  10: "assets/part-10-banner.jpg"
+};
+const PARTS=PN.map((name,k)=>{const lessons=ALL.filter(l=>l.id.startsWith((k+1)+"."));return{id:k+1,name,soon:!lessons.length,lessons}});
+const REAL=ALL.filter(l=>!l.soon);
+
+
+function isLessonUnlocked(id){
+  if(UNLOCK_ALL_LEVELS_FOR_TESTING) return true;
+  const idx = REAL.findIndex(l => l.id === id);
+  if(idx <= 0) return true; // Level 1.1 is always unlocked
+  const prevLesson = REAL[idx - 1];
+  return !!(S.done && S.done[prevLesson.id]);
+}
+
+function showLockToast(msg){
+  const oldToast = $("#lockToast");
+  if(oldToast) oldToast.remove();
+  const t = document.createElement("div");
+  t.id = "lockToast";
+  t.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#14213d;color:#fff;border:2.5px solid #ef4444;box-shadow:0 8px 24px rgba(0,0,0,0.35);padding:10px 20px;border-radius:999px;font-size:14px;font-weight:800;z-index:9999;display:flex;align-items:center;gap:8px;animation:pop .25s ease-out";
+  t.innerHTML = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+function openLevelSwitcher(currentLessonId){
+  const oldModal = $("#levelSwitcherModal");
+  if(oldModal) oldModal.remove();
+
+  const currentL = REAL.find(l => l.id === currentLessonId) || REAL[0];
+  const currentPartNum = parseInt(currentL.id.split(".")[0], 10) || 1;
+  let activePartTab = currentPartNum;
+
+  const modal = el(`
+    <div class="modal-overlay" id="levelSwitcherModal">
+      <div class="modal-card level-switcher-modal">
+        <div class="level-switcher-head">
+          <div style="text-align:left">
+            <h2 style="font-size:20px;margin:0 0 2px;color:#fff">🎯 Level चुनें (Select Level)</h2>
+            <div style="font-size:12px;opacity:.9">वर्तमान: Lv. ${currentL.id} — ${esc(currentL.title)}</div>
+          </div>
+          <button type="button" id="closeSwitcher" style="background:rgba(255,255,255,0.15);border:2px solid #fff;color:#fff;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:grid;place-items:center">✕</button>
+        </div>
+
+        <div class="level-switcher-tabs" id="switcherTabs">
+          ${PARTS.map(p => `
+            <button type="button" class="level-tab-btn ${activePartTab===p.id?'active':''}" data-part="${p.id}">
+              Part 0${p.id}
+            </button>
+          `).join("")}
+        </div>
+
+        <div class="level-switcher-list" id="switcherList"></div>
+      </div>
+    </div>
+  `);
+
+  document.body.appendChild(modal);
+
+  function renderList(){
+    const list = modal.querySelector("#switcherList");
+    const filtered = REAL.filter(l => l.id.startsWith(activePartTab + "."));
+    
+    list.innerHTML = filtered.map(l => {
+      const isDone = !!(S.done && S.done[l.id]);
+      const isCurrent = l.id === currentLessonId;
+      const isUnlocked = isLessonUnlocked(l.id);
+      
+      let badgeHtml = "";
+      if(isCurrent){
+        badgeHtml = '<span class="part-badge" style="background:#facc15;color:#14213d;border:1.5px solid #14213d">📍 Current</span>';
+      } else if(isDone){
+        badgeHtml = '<span class="part-badge done">✅ पूरा हुआ</span>';
+      } else if(isUnlocked){
+        badgeHtml = '<span class="part-badge" style="background:#0284c7;color:#fff">👉 अनलॉक</span>';
+      } else {
+        badgeHtml = '<span class="part-badge locked-badge">🔒 लॉक</span>';
+      }
+
+      return `
+        <div class="level-switch-item ${isCurrent ? 'current' : ''} ${isDone ? 'done' : ''} ${!isUnlocked ? 'locked' : ''}" data-l="${l.id}">
+          <div class="level-switch-num">${isDone ? '✓' : (!isUnlocked ? '🔒' : 'Lv.' + l.id)}</div>
+          <div style="flex:1">
+            <b style="font-size:15px;color:#14213d">${esc(l.title)}</b>
+            <small style="display:block;color:var(--mut);margin-top:2px">${esc(l.sub)} · ~${l.min} मिनट</small>
+          </div>
+          ${badgeHtml}
+        </div>
+      `;
+    }).join("");
+
+    list.querySelectorAll("[data-l]").forEach(item => {
+      item.onclick = () => {
+        const targetId = item.dataset.l;
+        if(!isLessonUnlocked(targetId)){
+          item.classList.remove("shake");
+          void item.offsetWidth;
+          item.classList.add("shake");
+          playErrorBuzz();
+          const prevIdx = REAL.findIndex(l => l.id === targetId) - 1;
+          const prevL = prevIdx >= 0 ? REAL[prevIdx] : null;
+          const reqName = prevL ? `Level ${prevL.id} (${prevL.title})` : "पिछला Level";
+          showLockToast(`🔒 यह Level अभी लॉक है! अनलॉक करने के लिए पहले ${reqName} पूरा करें।`);
+          return;
+        }
+        modal.remove();
+        go("lesson", targetId);
+      };
+    });
+  }
+
+  modal.querySelectorAll(".level-tab-btn").forEach(btn => {
+    btn.onclick = () => {
+      activePartTab = parseInt(btn.dataset.part, 10);
+      modal.querySelectorAll(".level-tab-btn").forEach(b => b.classList.toggle("active", b === btn));
+      renderList();
+    };
+  });
+
+  modal.querySelector("#closeSwitcher").onclick = () => modal.remove();
+  modal.onclick = (e) => {
+    if(e.target === modal) modal.remove();
+  };
+
+  renderList();
+}
+
+/* ============ STATE ============ */
+const KEY="computer_seekho_v1";
+const store={get(){try{return localStorage.getItem(KEY)}catch(e){return null}},set(v){try{localStorage.setItem(KEY,v)}catch(e){}},del(){try{localStorage.removeItem(KEY)}catch(e){}}};
+let S;try{S=JSON.parse(store.get()||"null")}catch(e){S=null}
+S=S||{user:null,done:{},sim:{folders:[]},log:[],cc:true,auto:true,pos:{},lastLesson:null};
+if(S.cc===undefined)S.cc=true;
+if(S.lastLesson===undefined)S.lastLesson=null;
+S.auto=true; // Always keep in auto mode as requested
+if(S.coins===undefined) S.coins = Object.keys(S.done||{}).length * 10;
+if(!S.assignAttempts) S.assignAttempts = {};
+if(!S.quizStats) S.quizStats = { firstTry: 0, total: 0 };
+const save=()=>store.set(JSON.stringify(S));
+const log=(e,d)=>{S.log.push({t:new Date().toISOString(),e,d});save()};
+const $=s=>document.querySelector(s);
+const el=(h)=>{const d=document.createElement("div");d.innerHTML=h.trim();return d.firstChild};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cleanSpeech=s=>String(s||"").replace(/^\s*\[[^\]]+\]\s*/g,"").trim();
+
+/* ============ WEB AUDIO SOUND SYNTHESIZER ============ */
+function playAudioTone(notes, type="sine") {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    notes.forEach(([freq, delay, dur, vol]) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, now + delay);
+      gain.gain.setValueAtTime(vol || 0.2, now + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + delay + dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + delay);
+      osc.stop(now + delay + dur);
+    });
+  } catch(e){}
+}
+
+function playCoinSound(){
+  playAudioTone([
+    [987.77, 0, 0.12, 0.25],   // B5
+    [1318.51, 0.08, 0.35, 0.3] // E6
+  ], "sine");
+}
+
+function playSuccessChime(){
+  playAudioTone([
+    [523.25, 0, 0.18, 0.18],    // C5
+    [659.25, 0.07, 0.22, 0.2],  // E5
+    [783.99, 0.14, 0.35, 0.22]  // G5
+  ], "triangle");
+}
+
+function playFanfareSound(){
+  playAudioTone([
+    [523.25, 0, 0.15, 0.25],    // C5
+    [659.25, 0.12, 0.15, 0.25], // E5
+    [783.99, 0.24, 0.15, 0.25], // G5
+    [1046.50, 0.36, 0.55, 0.35] // C6
+  ], "triangle");
+}
+
+function playErrorBuzz(){
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(160, now);
+    osc.frequency.linearRampToValueAtTime(120, now + 0.22);
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.linearRampToValueAtTime(0.001, now + 0.22);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.22);
+  } catch(e){}
+}
+
+/* ============ CONFETTI CELEBRATION ENGINE ============ */
+function launchConfetti(){
+  try {
+    const holder=el('<div class="confetti-holder" aria-hidden="true"></div>');
+    const colors=["#ffc233","#1b7f5c","#c0392b","#1d4e89","#2a9d8f","#e76f51"];
+    for(let j=0;j<36;j++){
+      const p=document.createElement("div");
+      p.className="confetti";
+      const bg=colors[Math.floor(Math.random()*colors.length)];
+      const left=Math.random()*100;
+      const size=7+Math.random()*7;
+      const dur=1.8+Math.random()*1.4;
+      const delay=Math.random()*0.35;
+      p.style.cssText=`left:${left}vw;background:${bg};width:${size}px;height:${size*1.3}px;animation-duration:${dur}s;animation-delay:${delay}s;transform:rotate(${Math.random()*360}deg);`;
+      holder.appendChild(p);
+    }
+    document.body.appendChild(holder);
+    setTimeout(()=>holder.remove(),3200);
+  } catch(e){}
+}
+
+/* ============ COIN REWARD & ANIMATION ENGINE ============ */
+function awardCoins(amount, label, anchorEl){
+  S.coins = (S.coins || 0) + amount;
+  save();
+  playCoinSound();
+  
+  const coinEl = $("#coinCount");
+  const coinPills = document.querySelectorAll(".coin-pill");
+  if(coinEl) coinEl.textContent = S.coins;
+  coinPills.forEach(p => {
+    p.classList.remove("bounce");
+    void p.offsetWidth;
+    p.classList.add("bounce");
+    setTimeout(() => p.classList.remove("bounce"), 700);
+  });
+  
+  const badge = document.createElement("div");
+  badge.className = "coin-fly-badge";
+  badge.innerHTML = `<span>+${amount} 🟡</span> ${label ? `<small style="font-size:12px;opacity:.9">${label}</small>` : ""}`;
+  
+  if(anchorEl && anchorEl.getBoundingClientRect){
+    const r = anchorEl.getBoundingClientRect();
+    badge.style.top = Math.max(20, r.top - 15) + "px";
+    badge.style.left = (r.left + r.width / 2) + "px";
+  } else {
+    badge.style.top = "110px";
+    badge.style.left = "50%";
+  }
+  document.body.appendChild(badge);
+  setTimeout(()=>badge.remove(), 1250);
+}
+
+/* ============ ASSIGNMENT COMPLETION & STARS MODAL ============ */
+function showAssignmentModal({title, subtitle, simAttempts, stars, coinsBonus, tasks, onContinue}){
+  const oldModal = $("#assignModal");
+  if(oldModal) oldModal.remove();
+  
+  const modal = el(`
+    <div class="modal-overlay" id="assignModal">
+      <div class="modal-card assign-modal-card">
+        <div class="assign-stars-row">
+          <span class="assign-star ${stars>=1?'star-anim-1':'dim'}">⭐</span>
+          <span class="assign-star ${stars>=2?'star-anim-2':'dim'}">⭐</span>
+          <span class="assign-star ${stars>=3?'star-anim-3':'dim'}">⭐</span>
+        </div>
+        <h2 style="font-size:22px;margin:0 0 4px;color:#14213d">${title}</h2>
+        <p style="color:var(--mut);font-size:14px;margin:0 0 14px">${subtitle}</p>
+        
+        <div class="assign-stats-box">
+          <div class="assign-stat-item">
+            <small>प्रयास (Attempts)</small>
+            <b style="color:${simAttempts===1?'#15803d':'#14213d'}">${simAttempts} ${simAttempts===1?'(1st Try! 🎯)':''}</b>
+          </div>
+          <div class="assign-stat-item">
+            <small>कमाए सिक्के</small>
+            <b style="color:#d97706">+${coinsBonus} 🟡</b>
+          </div>
+          <div class="assign-stat-item">
+            <small>Rating</small>
+            <b>${stars} Star ★</b>
+          </div>
+        </div>
+
+        <div class="assign-task-done-list">
+          ${tasks.map((t,idx)=>`
+            <div class="assign-task-mini-done">
+              <span>✅</span>
+              <span>Task ${idx+1}: ${esc(t.desc)}</span>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="modal-actions" style="margin-top:14px">
+          <button class="btn y" id="assignContinueBtn" style="width:100%;font-size:16px;font-weight:900;padding:12px;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;border-radius:12px">
+            शानदार! आगे बढ़ें →
+          </button>
+        </div>
+      </div>
+    </div>
+  `);
+  
+  document.body.appendChild(modal);
+  modal.querySelector("#assignContinueBtn").onclick = () => {
+    modal.remove();
+    if(onContinue) onContinue();
+  };
+}
+
+/* ============ KARAOKE AUDIO & LIVE SYNC ENGINE ============ */
+let curAudio=null;
+let isAudioPlaying=false;
+let curUtt=null;
+let playSpeed=1.0;
+let currentSpeechText="";
+let currentAudioId="";
+
+function renderKaraokeHtml(text){
+  if(!text)return "";
+  const tokens=text.split(/(\s+)/);
+  let wIdx=0;
+  return tokens.map(t=>{
+    if(/^\s+$/.test(t))return t;
+    return `<span class="k-word" data-idx="${wIdx++}">${esc(t)}</span>`;
+  }).join("");
+}
+
+function highlightKaraoke(progress){
+  const words=document.querySelectorAll(".k-word");
+  if(!words.length)return;
+  const count=Math.min(words.length,Math.floor(progress*words.length*1.04));
+  words.forEach((w,idx)=>{
+    if(idx<count)w.classList.add("active");
+    else w.classList.remove("active");
+  });
+}
+
+function highlightKaraokeChar(charIdx){
+  let accum=0;
+  const words=document.querySelectorAll(".k-word");
+  words.forEach(w=>{
+    const len=w.textContent.length;
+    if(accum<=charIdx)w.classList.add("active");
+    else w.classList.remove("active");
+    accum+=len+1;
+  });
+}
+
+function updateAudioUI(){
+  const sp=$("#sp");
+  const ppIcon=$("#audioPlayPauseIcon");
+  const ppBtn=$("#audioPlayPause");
+  if(sp){
+    sp.textContent=isAudioPlaying?"⏸️ रोकें":"🔊 सुनो";
+    sp.classList.toggle("playing",isAudioPlaying);
+  }
+  if(ppIcon){
+    ppIcon.textContent=isAudioPlaying?"❚❚":"▶";
+  }else if(ppBtn){
+    ppBtn.textContent=isAudioPlaying?"❚❚":"▶";
+  }
+  if(ppBtn){
+    ppBtn.classList.toggle("playing",isAudioPlaying);
+  }
+}
+
+function setPlaybackSpeed(s){
+  playSpeed=s;
+  if(curAudio)curAudio.playbackRate=s;
+  const btn=$("#speedBtn");
+  if(btn)btn.textContent=s+"x";
+}
+
+function cyclePlaybackSpeed(){
+  const speeds=[1.0, 1.25, 1.5, 0.85];
+  const nextIdx=(speeds.indexOf(playSpeed)+1)%speeds.length;
+  setPlaybackSpeed(speeds[nextIdx]);
+}
+
+function seekAudio(delta){
+  if(curAudio&&curAudio.duration){
+    curAudio.currentTime=Math.max(0,Math.min(curAudio.duration,curAudio.currentTime+delta));
+    highlightKaraoke(curAudio.currentTime/curAudio.duration);
+    if(curAudio.currentTime >= curAudio.duration - 0.2){
+      onAudioComplete();
+    }
+  } else if(delta > 0){
+    onAudioComplete();
+  }
+}
+
+function replayAudio(){
+  if(curAudio){
+    isStepAudioFinished = false;
+    const rnb=$("#roundNextBtn");
+    if(rnb) rnb.classList.add("hidden-for-audio");
+    curAudio.currentTime=0;
+    curAudio.play().catch(()=>{});
+    highlightKaraoke(0);
+  }else if(currentSpeechText){
+    isStepAudioFinished = false;
+    const rnb=$("#roundNextBtn");
+    if(rnb) rnb.classList.add("hidden-for-audio");
+    speak(currentSpeechText,currentAudioId);
+  }
+}
+
+function togglePlayPause(){
+  if(isAudioPlaying){
+    stopAudio();
+  }else if(currentSpeechText){
+    speak(currentSpeechText,currentAudioId);
+  }
+}
+
+function stopAudio(){
+  if(window._karaokeInterval){
+    clearInterval(window._karaokeInterval);
+    window._karaokeInterval=null;
+  }
+  if(window._audioFallbackTimer){
+    clearTimeout(window._audioFallbackTimer);
+    window._audioFallbackTimer=null;
+  }
+  if(curAudio){
+    curAudio.pause();
+    curAudio=null;
+  }
+  if(window.speechSynthesis){
+    window.speechSynthesis.cancel();
+  }
+  curUtt=null;
+  isAudioPlaying=false;
+  updateAudioUI();
+}
+const stop=stopAudio;
+
+let isStepAudioFinished = false;
+
+function revealNextButton(force){
+  // Strict rule: If audio is currently playing, NEVER reveal!
+  if(isAudioPlaying) return;
+  // If the step has narration and audio has not finished yet, DO NOT reveal unless forced upon actual completion!
+  if(currentSpeechText && !isStepAudioFinished && !force) return;
+
+  const rnb = $("#roundNextBtn");
+  if(rnb){
+    rnb.classList.remove("hidden-for-audio");
+    rnb.style.display = "";
+    rnb.classList.remove("pop-in");
+    void rnb.offsetWidth;
+    rnb.classList.add("pop-in");
+  }
+}
+
+function onAudioComplete(){
+  isAudioPlaying = false;
+  isStepAudioFinished = true;
+  if(window._audioFallbackTimer){
+    clearTimeout(window._audioFallbackTimer);
+    window._audioFallbackTimer = null;
+  }
+  updateAudioUI();
+  document.querySelectorAll(".k-word").forEach(w => w.classList.add("active"));
+  // Reveal the Continue button strictly after audio has ended!
+  revealNextButton(true);
+}
+
+function speak(text, id){
+  stopAudio();
+  isStepAudioFinished = false;
+  isAudioPlaying = true; // Mark as playing/buffering immediately
+
+  const rnb = $("#roundNextBtn");
+  if(rnb){
+    rnb.classList.add("hidden-for-audio");
+    rnb.style.display = "none";
+  }
+
+  if(!text || !String(text).trim()){
+    isAudioPlaying = false;
+    isStepAudioFinished = true;
+    revealNextButton(true);
+    return;
+  }
+
+  currentSpeechText = text;
+  currentAudioId = id;
+  const clean = cleanSpeech(text);
+  highlightKaraoke(0);
+
+  if(window._audioFallbackTimer) clearTimeout(window._audioFallbackTimer);
+
+  const tts = () => {
+    if(!window.speechSynthesis){
+      isAudioPlaying = false;
+      return;
+    }
+    try{
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = "hi-IN";
+      u.rate = playSpeed * 0.85;
+      curUtt = u;
+      u.onstart = () => {
+        isAudioPlaying = true;
+        isStepAudioFinished = false;
+        const r = $("#roundNextBtn");
+        if(r){
+          r.classList.add("hidden-for-audio");
+          r.style.display = "none";
+        }
+        updateAudioUI();
+        const wordsCount = clean.split(/\s+/).filter(Boolean).length;
+        const wordsPerSec = 2.2 * playSpeed;
+        const startTime = Date.now();
+        if(window._karaokeInterval) clearInterval(window._karaokeInterval);
+        window._karaokeInterval = setInterval(() => {
+          if(!isAudioPlaying){
+            clearInterval(window._karaokeInterval);
+            window._karaokeInterval = null;
+            return;
+          }
+          const elapsedSec = (Date.now() - startTime) / 1000;
+          const prog = Math.min(1, (elapsedSec * wordsPerSec) / wordsCount);
+          highlightKaraoke(prog);
+        }, 80);
+      };
+      u.onboundary = (e) => {
+        if(e.name === "word"){
+          highlightKaraokeChar(e.charIndex);
+        }
+      };
+      u.onend = () => {
+        if(window._karaokeInterval){
+          clearInterval(window._karaokeInterval);
+          window._karaokeInterval = null;
+        }
+        onAudioComplete();
+      };
+      u.onerror = (err) => {
+        if(window._karaokeInterval){
+          clearInterval(window._karaokeInterval);
+          window._karaokeInterval = null;
+        }
+        isAudioPlaying = false;
+        updateAudioUI();
+        console.warn("TTS error:", err);
+      };
+      window.speechSynthesis.speak(u);
+    }catch(err){
+      isAudioPlaying = false;
+      console.warn("TTS exception:", err);
+    }
+  };
+
+  if(USE_AUDIO_FILES && id){
+    try{
+      curAudio = new Audio(`/audio/${id}.mp3`);
+      curAudio.playbackRate = playSpeed;
+      
+      curAudio.onplay = () => {
+        isAudioPlaying = true;
+        isStepAudioFinished = false;
+        const r = $("#roundNextBtn");
+        if(r){
+          r.classList.add("hidden-for-audio");
+          r.style.display = "none";
+        }
+        updateAudioUI();
+      };
+      curAudio.ontimeupdate = () => {
+        if(curAudio && curAudio.duration){
+          highlightKaraoke(curAudio.currentTime / curAudio.duration);
+        }
+      };
+      curAudio.onended = () => {
+        onAudioComplete();
+      };
+      curAudio.onpause = () => {
+        if(curAudio && curAudio.currentTime < (curAudio.duration - 0.25)){
+          isAudioPlaying = false;
+          updateAudioUI();
+        }
+      };
+      curAudio.onerror = (e) => {
+        console.warn("Audio file failed, trying TTS", e);
+        curAudio = null;
+        tts();
+      };
+
+      const playPromise = curAudio.play();
+      if(playPromise !== undefined){
+        playPromise.then(() => {
+          isAudioPlaying = true;
+          updateAudioUI();
+        }).catch((err) => {
+          console.log("Autoplay waiting for user gesture:", err);
+          isAudioPlaying = false;
+          updateAudioUI();
+          // DO NOT call onAudioComplete() here! Keep continue button hidden until audio is played
+          const stageEl = $("#sg") || document.body;
+          const unlockAudio = () => {
+            stageEl.removeEventListener("click", unlockAudio);
+            if(curAudio && !isStepAudioFinished && !isAudioPlaying){
+              curAudio.play().catch(()=>{});
+            }
+          };
+          stageEl.addEventListener("click", unlockAudio, { once: true });
+        });
+      }
+    }catch(e){
+      console.warn("Audio error:", e);
+      tts();
+    }
+  }else{
+    tts();
+  }
+}
+
+/* ============ VIEWS ============ */
+const app=$("#app");
+function head(){const w=$("#who");if(w)w.textContent=S.user?`${S.user.name} · Class ${S.user.cls}`:""}
+
+/* ============ CLEAN HTML5 ROUTING (NO HASH) ============ */
+function parseRoute(){
+  // If user entered with old hash (e.g. #/home or #/lesson/1.1), cleanly migrate it to clean URL path
+  if(window.location.hash){
+    const cleanFromHash = window.location.hash.replace(/^#\/?/, "").trim();
+    if(cleanFromHash){
+      window.history.replaceState(null, "", "/" + cleanFromHash);
+    } else {
+      window.history.replaceState(null, "", "/");
+    }
+  }
+
+  const path = (window.location.pathname || "/").replace(/^\//, "").replace(/\/$/, "").trim();
+  const parts = path.split("/").filter(Boolean);
+  const route = parts[0] || "";
+  const param = parts[1] || "";
+
+  if(route === "welcome") return { view: "welcome", param: null };
+  if(route === "home" || route === "course" || route === "dashboard") return { view: "courseHome", param: null };
+  if(route === "sim" || route === "practice" || route === "lab") return { view: "sim", param: null };
+  if(route === "lesson" && param) return { view: "lesson", param: param };
+
+  return { view: S.user ? "courseHome" : "welcome", param: null };
+}
+
+function applyRoute(){
+  const r = parseRoute();
+  if(!S.user && r.view !== "welcome"){
+    go("welcome", null, true);
+    return;
+  }
+  _renderView(r.view, r.param);
+}
+
+function go(v, a, replace){
+  stop();
+  if(v==="lesson"&&a){
+    if(!isLessonUnlocked(a)){
+      playErrorBuzz();
+      const prevIdx = REAL.findIndex(l => l.id === a) - 1;
+      const prevL = prevIdx >= 0 ? REAL[prevIdx] : null;
+      const reqName = prevL ? `Level ${prevL.id} (${prevL.title})` : "पिछला Level";
+      showLockToast(`🔒 यह Level अभी लॉक है! पहले ${reqName} पूरा करें।`);
+      return;
+    }
+    S.lastLesson=a;
+    save();
+  }
+
+  // Clean HTML5 URL path (No Hash!)
+  let targetPath = "/home";
+  if(v === "welcome") targetPath = "/welcome";
+  else if(v === "courseHome") targetPath = "/home";
+  else if(v === "lesson") targetPath = `/lesson/${a}`;
+  else if(v === "sim") targetPath = "/practice";
+
+  if(window.location.pathname !== targetPath || window.location.hash){
+    if(replace){
+      window.history.replaceState(null, "", targetPath);
+    } else {
+      window.history.pushState(null, "", targetPath);
+    }
+  }
+  _renderView(v, a);
+}
+
+function _renderView(v, a){
+  window.scrollTo(0,0);
+  head();
+  const views = { welcome, courseHome, lesson, sim };
+  if(views[v]){
+    views[v](a);
+  } else {
+    courseHome();
+  }
+}
+
+function welcome(){
+  app.innerHTML=`
+  <div class="welcome-wrap">
+    <div class="welcome-hero-card" style="padding:28px 22px;text-align:center">
+      <div style="font-size:48px;margin-bottom:8px">🖥️</div>
+      <div class="welcome-hero-body" style="padding:0">
+        <h1 style="margin:0 0 6px;font-size:26px">कंप्यूटर सीखो — बिल्कुल शुरू से</h1>
+        <p style="margin:0;color:var(--mut);font-size:15px">${COURSE_TITLE} · हिंदी में · अपनी रफ़्तार से</p>
+      </div>
+    </div>
+    <div class="card" style="border:2.5px solid #14213d;border-radius:20px;box-shadow:4px 6px 0 #14213d;padding:22px">
+      <label for="nm">तुम्हारा नाम</label>
+      <input id="nm" autocomplete="off" placeholder="जैसे: Rahul Sharma" style="border:2px solid #14213d;border-radius:10px">
+      <label for="cl">तुम्हारी कक्षा</label>
+      <select id="cl" style="border:2px solid #14213d;border-radius:10px">
+        <option value="">चुनो…</option>${[6,7,8,9,10,11,12].map(c=>`<option>${c}</option>`).join("")}
+      </select>
+      <p id="er" style="color:var(--r);min-height:1.6em;margin:8px 0"></p>
+      <button class="btn y" id="st" style="width:100%;font-size:18px;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;padding:12px">कोर्स शुरू करो →</button>
+    </div>
+  </div>`;
+  $("#st").onclick=()=>{const name=$("#nm").value.trim(),cls=$("#cl").value;
+    if(!name||!cls){$("#er").textContent="नाम लिखो और कक्षा चुनो।";return}
+    S.user={name,cls,start:new Date().toISOString()};log("start",{name,cls});go("courseHome")}
+}
+
+function courseHome(){
+  const done=REAL.filter(l=>S.done[l.id]).length,pct=Math.round(done/REAL.length*100);
+  const next=REAL.find(l=>!S.done[l.id]);
+  const lastLesson=ALL.find(l=>l.id===S.lastLesson) || next || null;
+  const continueLessonId = lastLesson && !S.done[lastLesson.id] ? lastLesson.id : (next ? next.id : null);
+  const continueLesson = continueLessonId ? ALL.find(l=>l.id===continueLessonId) : null;
+  const totalCoins = S.coins || 0;
+  const totalStars = Object.values(S.assignAttempts || {}).reduce((sum, a) => sum + (a.stars || 1), 0);
+  const userInitial = (S.user && S.user.name ? S.user.name.trim().charAt(0) : "U").toUpperCase();
+
+  let h=`
+  <div class="course-home-topbar">
+    <div class="user-profile-badge" id="userProfileBadge" tabindex="0" title="Click or hover for Profile Menu">
+      <div class="user-avatar">${esc(userInitial)}</div>
+      <div class="user-info">
+        <div class="user-name">${esc(S.user ? S.user.name : "Learner")} <span style="font-size:12px;opacity:.7">▾</span></div>
+        <div class="user-cls">Class ${esc(S.user ? S.user.cls : "")}</div>
+      </div>
+
+      <!-- Profile Hover / Tap Menu -->
+      <div class="profile-dropdown-menu" id="profileDropdownMenu">
+        <div class="profile-dropdown-header">
+          <div class="dropdown-avatar">${esc(userInitial)}</div>
+          <div>
+            <span class="dropdown-user-name">${esc(S.user ? S.user.name : "Learner")}</span>
+            <span class="dropdown-user-cls">Class ${esc(S.user ? S.user.cls : "")} · Basic Course</span>
+          </div>
+        </div>
+        <div class="profile-dropdown-divider"></div>
+        <button type="button" class="profile-dropdown-item" id="menuDlProgress">
+          <span class="p-item-icon">📥</span>
+          <span>Download Progress</span>
+        </button>
+        <button type="button" class="profile-dropdown-item" id="menuResetProgress">
+          <span class="p-item-icon">↺</span>
+          <span>Reset Progress</span>
+        </button>
+        <div class="profile-dropdown-divider"></div>
+        <button type="button" class="profile-dropdown-item logout-item" id="menuLogout">
+          <span class="p-item-icon">🚪</span>
+          <span>Log out</span>
+        </button>
+      </div>
+    </div>
+    <div class="home-stats-cluster">
+      ${UNLOCK_ALL_LEVELS_FOR_TESTING ? `
+      <div class="user-stat-pill test-mode-pill" style="background:#e0f2fe;color:#0369a1;border:2px solid #0284c7;font-weight:800;font-size:12px;display:inline-flex;align-items:center;gap:4px" title="Testing Mode Active: All Levels Unlocked">
+        <span>🧪</span>
+        <span>Testing: All Unlocked</span>
+      </div>` : ""}
+      <div class="user-stat-pill coin-stat-pill" title="कुल अर्जित सिक्के (Coins)">
+        <span class="coin-spin">🟡</span>
+        <b id="homeCoinCount">${totalCoins}</b>
+        <span class="stat-unit">Coins</span>
+      </div>
+      <div class="user-stat-pill star-stat-pill" title="Verified Assignments & Stars">
+        <span>⭐</span>
+        <b>${totalStars}★</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="course-home-hero">
+    <div class="course-hero-content">
+      <h1>नमस्ते ${esc(S.user ? S.user.name : "Learner")}! 👋</h1>
+      <p style="opacity:.9;margin:4px 0 10px">${done} / ${REAL.length} lessons पूरे (${pct}%)</p>
+      <div class="bar" style="background:rgba(255,255,255,0.25);height:12px;border:1.5px solid rgba(255,255,255,0.5)"><i style="width:${pct}%"></i></div>
+      ${continueLesson ? `<button class="btn y" data-l="${continueLesson.id}" style="margin-top:14px;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;font-weight:900;font-size:16px;padding:12px 22px;border-radius:12px">👉 ${done ? "आगे बढ़ो" : "पहला lesson शुरू करो"}: Level ${continueLesson.id} (${continueLesson.title})</button>` : "<b>🎉 बधाई! सारे Lessons पूरे कर लिए!</b>"}
+    </div>
+  </div>`;
+
+  // Modular Part Tabs (only show one part at a time so user isn't overwhelmed)
+  const defaultPartId = continueLessonId ? parseInt(continueLessonId.split(".")[0], 10) : 1;
+  let activePart = defaultPartId;
+
+  h += `
+  <div class="parts-nav-tabs-wrapper">
+    <div class="parts-nav-label">
+      <span>📚 Course Modules (भाग)</span>
+      <span style="font-size:12px;color:var(--mut)">चुनें और सीखें</span>
+    </div>
+    <div class="parts-nav-tabs" id="partTabsBar">
+      ${PARTS.map(p => {
+        const pDone = p.lessons.filter(l => S.done[l.id]).length;
+        const isDone = pDone === p.lessons.length && p.lessons.length > 0;
+        const firstL = p.lessons[0];
+        const isUnlocked = firstL ? isLessonUnlocked(firstL.id) : true;
+        const badge = isDone ? "✓" : (pDone > 0 ? `${pDone}/${p.lessons.length}` : (!isUnlocked ? "🔒" : ""));
+        const tabClass = (p.id === defaultPartId ? "active " : "") + (isDone ? "done-tab " : (!isUnlocked ? "locked-tab " : ""));
+        return `<button type="button" class="part-nav-btn ${tabClass}" data-part="${p.id}">
+          <span>Part 0${p.id}</span>
+          ${badge ? `<span style="font-size:11px;opacity:0.9">${badge}</span>` : ""}
+        </button>`;
+      }).join("")}
+      <button type="button" class="part-nav-btn" data-part="practice" id="tabPractice">
+        <span>🖥️ Practice Lab</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="partPanesContainer">
+  `;
+
+  PARTS.forEach((p, pIdx) => {
+    const pDone = p.lessons.filter(l => S.done[l.id]).length;
+    const pImg = PART_IMAGES[p.id];
+    const prevPart = pIdx > 0 ? PARTS[pIdx - 1] : null;
+    const nextPart = pIdx < PARTS.length - 1 ? PARTS[pIdx + 1] : null;
+
+    h += `
+    <div class="part-view-pane ${p.id === defaultPartId ? "active" : ""}" id="pane-part-${p.id}">
+      <div class="part-card" style="margin-bottom:0">
+        ${pImg ? `<div class="part-banner-wrap"><img src="${pImg}" alt="${esc(p.name)}" class="part-banner-img" loading="lazy"></div>` : ""}
+        <div class="part-title-row">
+          <div class="part" style="margin:0">${p.name}${p.soon ? " — जल्द आ रहा है" : ""}</div>
+          ${!p.soon ? `<span class="part-badge ${pDone === p.lessons.length && p.lessons.length > 0 ? "done" : ""}"><span style="font-size:12px;opacity:0.85">${pDone}/${p.lessons.length}</span> पूरे</span>` : ""}
+        </div>
+        <div class="part-lessons-list">
+          ${p.lessons.map(l => {
+            const isDone = !!S.done[l.id];
+            const isUnlocked = isLessonUnlocked(l.id);
+            return `<button class="lrow ${isDone ? "done" : ""} ${!isUnlocked ? "locked" : ""}" data-l="${l.id}" ${l.soon ? "disabled" : ""} style="border:2px solid #14213d;box-shadow:2px 3px 0 #14213d;margin-bottom:8px">
+              <span class="n">${isDone ? "✓" : (!isUnlocked ? "🔒" : l.id)}</span>
+              <span style="flex:1"><h3>${l.title}</h3><small>${l.sub} · ${l.soon ? "जल्द आ रहा है" : "~" + l.min + " मिनट"}</small></span>
+              <span class="part-badge ${isDone ? "done" : (!isUnlocked ? "locked-badge" : "")}">${isDone ? "Completed" : (!isUnlocked ? "🔒 Locked" : "Start →")}</span>
+            </button>`;
+          }).join("")}
+        </div>
+      </div>
+    </div>`;
+  });
+
+  // Practice Lab Pane
+  h += `
+    <div class="part-view-pane" id="pane-part-practice">
+      <div class="part-card" id="practice-sec" style="margin-bottom:0">
+        <div class="part-banner-wrap"><img src="assets/practice-lab.jpg" alt="Windows Simulator Practice" class="part-banner-img" loading="lazy"></div>
+        <div class="part-title-row"><div class="part" style="margin:0">Real Computer Practice Lab</div><span class="part-badge" style="background:#facc15;color:#14213d;border:1.5px solid #14213d">Interactive</span></div>
+        <div class="part-lessons-list">
+          <button class="lrow" id="gs" style="border:2px solid #14213d;box-shadow:2px 3px 0 #14213d"><span class="n">🪟</span><span style="flex:1"><h3>Windows Desktop Simulator</h3><small>Desktop पर folder बनाना, Notepad, Recycle Bin (interactive assignment)</small></span><span class="part-badge" style="background:#1b7f5c;color:#fff">Open Lab →</span></button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  app.innerHTML = h;
+
+  // Function to switch active part pane
+  function switchPart(partKey){
+    const targetPaneId = partKey === "practice" ? "pane-part-practice" : `pane-part-${partKey}`;
+    const targetPane = document.getElementById(targetPaneId);
+    if (!targetPane) return;
+
+    document.querySelectorAll(".part-view-pane").forEach(p => p.classList.remove("active"));
+    targetPane.classList.add("active");
+
+    document.querySelectorAll(".part-nav-btn").forEach(b => {
+      b.classList.toggle("active", b.dataset.part === String(partKey));
+    });
+
+    const activeBtn = document.querySelector(`.part-nav-btn[data-part="${partKey}"]`);
+    if(activeBtn) activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
+
+  app.querySelectorAll(".part-nav-btn").forEach(b => {
+    b.onclick = () => switchPart(b.dataset.part);
+  });
+
+  app.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>go("lesson",b.dataset.l));
+  app.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{
+    const target=$("#"+b.dataset.jump);
+    if(target)target.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  $("#gs").onclick=()=>go("sim");
+
+  // Profile Dropdown Actions
+  const btnDl = $("#menuDlProgress");
+  if(btnDl) btnDl.onclick = (e) => {
+    e.stopPropagation();
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(S, null, 2)], { type: "application/json" }));
+    a.download = `progress-${S.user.name.replace(/\s+/g, "_")}.json`;
+    a.click();
+  };
+
+  const btnRs = $("#menuResetProgress");
+  if(btnRs) btnRs.onclick = (e) => {
+    e.stopPropagation();
+    if(confirm("क्या आप सारा progress reset करना चाहते हैं?")){
+      S.done = {};
+      S.pos = {};
+      S.sim = { folders: [] };
+      S.lastLesson = null;
+      save();
+      go("courseHome");
+    }
+  };
+
+  const btnLo = $("#menuLogout");
+  if(btnLo) btnLo.onclick = (e) => {
+    e.stopPropagation();
+    if(confirm("Log out करें? इस device का progress मिट जाएगा।")){
+      store.del();
+      location.reload();
+    }
+  };
+
+  // Mobile tap support for profile menu
+  const pBadge = $("#userProfileBadge");
+  const pMenu = $("#profileDropdownMenu");
+  if(pBadge && pMenu){
+    pBadge.onclick = (e) => {
+      if(e.target.closest(".profile-dropdown-item")) return;
+      pMenu.classList.toggle("show");
+    };
+    document.addEventListener("click", (e) => {
+      if(!pBadge.contains(e.target)) pMenu.classList.remove("show");
+    });
+  }
+}
+
+/* ============ LESSON PLAYER (one step per screen) ============ */
+let CURL=null;
+const ILL_IMAGES = {
+  desktop: "assets/ill-desktop.jpg",
+  laptop: "assets/ill-laptop.jpg",
+  mouse: "assets/ill-mouse.jpg",
+  keyboard: "assets/ill-keyboard.jpg",
+  shop: "assets/ill-shop.jpg"
+};
+
+function ill(n){
+  if(typeof ILL_IMAGES !== "undefined" && ILL_IMAGES && ILL_IMAGES[n]){
+    return `<img src="${ILL_IMAGES[n]}" alt="${n}" class="ill-img" loading="lazy">`;
+  }
+  const icons = (typeof I !== "undefined" && I) ? I : ((typeof window !== "undefined" && window.I) ? window.I : {});
+  const svg = (icons && icons[n]) ? icons[n] : "";
+  return `<svg viewBox="0 0 120 90" role="img" aria-label="${n}">${svg}</svg>`;
+}
+function getContextIcon(text){
+  const t = (text || "").toLowerCase();
+  /* Entertainment & Media */
+  if(t.includes("music") || t.includes("गाना") || t.includes("गीत") || t.includes("sound") || t.includes("ऑडियो")) return "🎵";
+  if(t.includes("movie") || t.includes("video") || t.includes("फिल्म") || t.includes("सिनेमा") || t.includes("वीडियो")) return "🎬";
+  if(t.includes("game") || t.includes("खेल")) return "🎮";
+  if(t.includes("photo") || t.includes("तस्वीर") || t.includes("फोटो") || t.includes("picture") || t.includes("इमेज")) return "📸";
+
+  /* Communication */
+  if(t.includes("email") || t.includes("संदेश") || t.includes("message") || t.includes("पत्र") || t.includes("mail") || t.includes("ईमेल")) return "✉️";
+  if(t.includes("call") || t.includes("बातचीत") || t.includes("phone") || t.includes("फोन")) return "📞";
+  if(t.includes("chat") || t.includes("चैट") || t.includes("वार्तालाप")) return "💬";
+
+  /* Art & Creativity */
+  if(t.includes("draw") || t.includes("चित्र") || t.includes("poster") || t.includes("कला") || t.includes("art") || t.includes("रंग") || t.includes("पेंट")) return "🎨";
+  if(t.includes("design") || t.includes("डिजाइन") || t.includes("presentation") || t.includes("प्रेजेंटेशन")) return "✨";
+
+  /* Math, Finance & Calculations */
+  if(t.includes("bill") || t.includes("बिल") || t.includes("रुपये") || t.includes("पैसे") || t.includes("price") || t.includes("मूल्य")) return "🧾";
+  if(t.includes("जोड़") || t.includes("घटा") || t.includes("गुणा") || t.includes("भाग") || t.includes("calc") || t.includes("गणना") || t.includes("math")) return "🔢";
+  if(t.includes("data") || t.includes("डाटा") || t.includes("हिसाब") || t.includes("report") || t.includes("ग्राफ")) return "📊";
+
+  /* Places */
+  if(t.includes("bank") || t.includes("बैंक") || t.includes("atm") || t.includes("खाता")) return "🏦";
+  if(t.includes("hospital") || t.includes("अस्पताल") || t.includes("मरीज") || t.includes("डॉक्टर") || t.includes("दवा")) return "🏥";
+  if(t.includes("train") || t.includes("रेल") || t.includes("स्टेशन") || t.includes("ticket") || t.includes("टिकट") || t.includes("यात्रा")) return "🚆";
+  if(t.includes("shop") || t.includes("दुकान") || t.includes("store") || t.includes("मार्केट") || t.includes("सामान")) return "🏪";
+  if(t.includes("office") || t.includes("कार्यालय") || t.includes("दफ्तर") || t.includes("काम")) return "🏢";
+  if(t.includes("school") || t.includes("स्कूल") || t.includes("विद्यालय") || t.includes("पढ़ाई") || t.includes("student") || t.includes("विद्यार्थी") || t.includes("किताब") || t.includes("learn")) return "📚";
+  if(t.includes("home") || t.includes("घर") || t.includes("परिवार")) return "🏠";
+
+  /* Search & Information */
+  if(t.includes("search") || t.includes("खोज") || t.includes("internet") || t.includes("इंटरनेट") || t.includes("वेबसाइट") || t.includes("browse")) return "🔍";
+  if(t.includes("समाचार") || t.includes("news") || t.includes("खबर") || t.includes("अखबार")) return "📰";
+  if(t.includes("research") || t.includes("रिसर्च") || t.includes("अन्वेषण")) return "🔬";
+
+  /* Hardware, Parts & IPO */
+  if(t.includes("input") || t.includes("इनपुट")) return "📥";
+  if(t.includes("output") || t.includes("आउटपुट")) return "📤";
+  if(t.includes("process") || t.includes("प्रोसेस") || t.includes("cpu") || t.includes("brain") || t.includes("दिमाग")) return "🧠";
+  if(t.includes("speed") || t.includes("रफ़्तार") || t.includes("गति") || t.includes("तेज़") || t.includes("fast")) return "⚡";
+  if(t.includes("memory") || t.includes("याददाश्त") || t.includes("ram") || t.includes("storage") || t.includes("स्टोरेज")) return "💾";
+  if(t.includes("accuracy") || t.includes("सटीक") || t.includes("गलती नहीं")) return "🎯";
+  if(t.includes("multitask") || t.includes("एक साथ") || t.includes("कई काम")) return "🔄";
+
+  /* Keyboard & Mouse */
+  if(t.includes("mouse") || t.includes("माउस")) return "🖱️";
+  if(t.includes("click") || t.includes("क्लिक") || t.includes("दबाएं")) return "👆";
+  if(t.includes("right click") || t.includes("राइट क्लिक")) return "✌️";
+  if(t.includes("scroll") || t.includes("स्क्रोल") || t.includes("पहिया")) return "📜";
+  if(t.includes("drag") || t.includes("खींच") || t.includes("ड्रैग")) return "✋";
+  if(t.includes("type") || t.includes("टाइप") || t.includes("लिख") || t.includes("keyboard") || t.includes("कीबोर्ड") || t.includes("अक्षर")) return "⌨️";
+  if(t.includes("enter") || t.includes("एंटर")) return "↵";
+  if(t.includes("space") || t.includes("स्पेस")) return "␣";
+  if(t.includes("backspace") || t.includes("मिटा")) return "⌫";
+
+  /* Windows & Files */
+  if(t.includes("folder") || t.includes("फ़ोल्डर") || t.includes("फोल्डर")) return "📁";
+  if(t.includes("file") || t.includes("फ़ाइल") || t.includes("फाइल") || t.includes("document") || t.includes("दस्तावेज़")) return "📄";
+  if(t.includes("recycle") || t.includes("delete") || t.includes("कचरा") || t.includes("हटाएं")) return "🗑️";
+  if(t.includes("start") || t.includes("विंडोज") || t.includes("windows")) return "⊞";
+  if(t.includes("save") || t.includes("सुरक्षित") || t.includes("सहेज")) return "💾";
+  if(t.includes("print") || t.includes("कागज़") || t.includes("प्रिंट")) return "🖨️";
+
+  return "✦";
+}
+
+function renderConceptList(items){
+  if(!items || !items.length) return "";
+  const points = [];
+  const examples = [];
+  
+  items.forEach(item => {
+    if(/^example:|^उदाहरण:/i.test(item.trim())){
+      examples.push(item.replace(/^example:\s*|^उदाहरण:\s*/i, "").trim());
+    } else {
+      points.push(item.trim());
+    }
+  });
+
+  let html = `<div class="concept-cards-grid">`;
+  points.forEach((pt, idx) => {
+    const icon = getContextIcon(pt);
+    html += `
+      <div class="concept-card stagger-anim" style="animation-delay: ${idx * 0.07}s">
+        <span class="concept-card-icon">${icon}</span>
+        <span class="concept-card-text">${esc(pt)}</span>
+      </div>
+    `;
+  });
+  html += `</div>`;
+
+  if(examples.length){
+    examples.forEach((ex, idx) => {
+      html += `
+        <div class="example-highlight-card stagger-anim" style="animation-delay: ${(points.length + idx) * 0.07}s">
+          <div class="example-badge">💡 Real-Life Example (उदाहरण)</div>
+          <div class="example-text">${esc(ex)}</div>
+        </div>
+      `;
+    });
+  }
+
+  return html;
+}
+
+const li = a => renderConceptList(a);
+function dl(){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:"application/json"}));a.download=`progress-${S.user.name.replace(/\s+/g,"_")}.json`;a.click()}
+const R={
+ t:(g,s)=>{
+  let html = "";
+  if(s.i){
+   html += `<div class="ill">${ill(s.i)}</div>`;
+  }
+  if(s.h){
+   html += `<h2 style="margin: 8px 0 4px; font-size: 22px; color: var(--ink); text-align: center;">${esc(s.h)}</h2>`;
+  }
+  if(s.p){
+   html += `<p style="font-size: 16px; line-height: 1.5; margin: 4px 0 10px; text-align: center;">${esc(s.p)}</p>`;
+  }
+  if(s.b){
+   html += `<p class="big" style="text-align: center;">${esc(s.b)}</p>`;
+  }
+  if(s.l && s.l.length){
+   html += renderConceptList(s.l);
+  }
+  g.innerHTML = html;
+ },
+ g:(g,s)=>{g.innerHTML=`<div class="gal">${s.it.map(x=>`<figure>${ill(x.i)}<figcaption>${x.l}</figcaption></figure>`).join("")}</div>`;},
+ tb:(g,s)=>{g.innerHTML=`<h2>${s.h}</h2>${s.p?`<p>${s.p}</p>`:""}<div style="overflow-x:auto"><table>${s.rows.map((r,k)=>`<tr>${r.map((x,c)=>k?`<td>${c==0&&s.ic?`<span class="ti">${ill(s.ic[k-1])}</span>`:""}${x}</td>`:`<th>${x}</th>`).join("")}</tr>`).join("")}</table></div>`},
+ q:(g,s,done)=>{
+    const qs = s.qs || [];
+    if(qs.length === 0){ done(); return true; }
+
+    const results = {};
+    qs.forEach((_, idx) => {
+      results[idx] = { attempts: 0, pick: [], isCorrect: false };
+    });
+
+    let queue = qs.map((_, idx) => idx);
+    let queueIndex = 0;
+
+    function renderQuestion(){
+      if(queueIndex >= queue.length){
+        renderReviewScreen();
+        return;
+      }
+
+      const qIdx = queue[queueIndex];
+      const q = qs[qIdx];
+      const multi = q.a.length > 1;
+      const pick = new Set();
+      const isRetry = results[qIdx].attempts > 0;
+
+      g.innerHTML = `
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>${esc(s.h || "Knowledge Check")}</h2>
+            <div class="quiz-progress-pill">
+              <span>प्रश्न ${queueIndex + 1} / ${queue.length}</span>
+              ${isRetry ? '<span class="attempt-tag" style="background:#fef2f2;color:#dc2626;border-color:#fca5a5">⚠️ Retry</span>' : ''}
+            </div>
+          </div>
+          
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" style="width: ${Math.round(((queueIndex) / queue.length) * 100)}%"></div>
+          </div>
+
+          <div class="qq quiz-card">
+            <div class="quiz-question-title">
+              <span class="q-num-badge">${qIdx + 1}</span>
+              <b>${esc(q.q)}</b>
+            </div>
+            ${multi ? '<div class="cmp" style="margin:4px 0 10px">💡 एक से अधिक उत्तर सही हो सकते हैं</div>' : ''}
+            <div class="quiz-options-list" id="qOpts"></div>
+            <div class="fb" id="qFb"></div>
+          </div>
+        </div>
+      `;
+
+      const optsBox = g.querySelector("#qOpts");
+      const fb = g.querySelector("#qFb");
+
+      const optButtons = q.o.map((o, oi) => {
+        o = typeof o === "string" ? { l: o } : o;
+        const b = el(`
+          <button type="button" class="opt ${o.i ? "wi" : ""}">
+            ${o.i ? ill(o.i) : ""}
+            <span>
+              <b>${esc(o.l)}</b>
+              ${o.d ? `<small>${esc(o.d)}</small>` : ""}
+            </span>
+          </button>
+        `);
+
+        b.onclick = () => {
+          if (b.disabled) return;
+          if (multi) {
+            if (pick.has(oi)) { pick.delete(oi); b.classList.remove("sel"); }
+            else { pick.add(oi); b.classList.add("sel"); }
+          } else {
+            submitChoice([oi], b);
+          }
+        };
+        optsBox.appendChild(b);
+        return b;
+      });
+
+      if (multi) {
+        const submitBtn = el(`
+          <button type="button" class="btn y" style="margin-top:14px;width:100%;font-size:16px;font-weight:900;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;border-radius:12px">
+            उत्तर सबमिट करें →
+          </button>
+        `);
+        submitBtn.onclick = () => {
+          if (pick.size === 0) {
+            fb.innerHTML = '<span style="color:#dc2626;font-weight:800">⚠️ कृपया कम से कम एक विकल्प चुनें!</span>';
+            return;
+          }
+          submitChoice([...pick], submitBtn);
+        };
+        optsBox.appendChild(submitBtn);
+      }
+
+      function submitChoice(chosen, triggerBtn) {
+        optButtons.forEach(btn => btn.disabled = true);
+        results[qIdx].attempts++;
+        results[qIdx].pick = chosen;
+        const isRight = chosen.length === q.a.length && chosen.every(x => q.a.includes(x));
+        results[qIdx].isCorrect = isRight;
+
+        log("quiz_answer", { lesson: CURL, qIdx, q: q.q, chosen, isRight, attempt: results[qIdx].attempts });
+
+        if (isRight) {
+          playSuccessChime();
+          optButtons.forEach((btn, idx) => {
+            if (q.a.includes(idx)) btn.classList.add("ok");
+          });
+          fb.innerHTML = '<div style="color:#15803d;font-weight:900;margin-top:8px">✅ उत्तर दर्ज हो गया!</div>';
+        } else {
+          playErrorBuzz();
+          if (triggerBtn && triggerBtn.classList) {
+            triggerBtn.classList.add("no");
+          }
+          fb.innerHTML = '<div style="color:#dc2626;font-weight:800;margin-top:8px">❌ उत्तर दर्ज हो गया।</div>';
+        }
+
+        setTimeout(() => {
+          queueIndex++;
+          renderQuestion();
+        }, 500);
+      }
+    }
+
+    function renderReviewScreen(){
+      const incorrectIndices = queue.filter(idx => !results[idx].isCorrect);
+      const totalAttempted = queue.length;
+      const correctCount = totalAttempted - incorrectIndices.length;
+      const allCorrect = incorrectIndices.length === 0;
+
+      if (allCorrect) {
+        let firstTryCount = 0;
+        let totalCoinsAwarded = 0;
+        qs.forEach((_, idx) => {
+          const att = results[idx].attempts || 1;
+          if (att === 1) {
+            firstTryCount++;
+            totalCoinsAwarded += 5; // 5 coins for 1st try
+          } else if (att === 2) {
+            totalCoinsAwarded += 1; // only 1 coin for reattempt (significantly less)
+          } else {
+            totalCoinsAwarded += 0; // 0 coins for 3+ attempts
+          }
+        });
+        const isPerfect = firstTryCount === qs.length;
+        if (isPerfect) {
+          totalCoinsAwarded += 5; // +5 bonus for 100% first try
+        }
+
+        S.quizStats = S.quizStats || { firstTry: 0, total: 0 };
+        S.quizStats.firstTry += firstTryCount;
+        S.quizStats.total += qs.length;
+        save();
+
+        try { awardCoins(totalCoinsAwarded, `Quiz Done! +${totalCoinsAwarded} 🟡`); } catch(e){}
+        try { playFanfareSound(); } catch(e){}
+        try { launchConfetti(); } catch(e){}
+
+        g.innerHTML = `
+          <div class="quiz-container quiz-results-card" style="border-color:#15803d;padding:26px 20px">
+            <div style="font-size:48px;margin-bottom:8px">🎉</div>
+            <h2 style="font-size:22px;margin:0 0 6px;color:#14213d">शानदार! सारे उत्तर सही हैं!</h2>
+            <p style="color:#15803d;font-size:16px;font-weight:900;margin:0 0 6px">+${totalCoinsAwarded} 🟡 सिक्के मिले!</p>
+            <p style="color:var(--mut);font-size:13px;font-weight:700;margin:0 0 16px">
+              ${isPerfect ? '🎯 सारे प्रश्न पहले प्रयास में सही (+5 Bonus)!' : `${firstTryCount} / ${qs.length} पहले प्रयास में सही (Reattempt पर 1 सिक्का मिला)`}
+            </p>
+            <button type="button" class="btn y" id="quizNextActionBtn" style="width:100%;font-size:17px;font-weight:900;padding:12px;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;border-radius:12px;cursor:pointer">
+              👉 अगला कदम (Next Step) →
+            </button>
+          </div>
+        `;
+
+        if (typeof done === "function") done();
+
+        const qnb = g.querySelector("#quizNextActionBtn");
+        if(qnb){
+          qnb.onclick = () => {
+            const rnb = $("#roundNextBtn");
+            if(rnb) {
+              rnb.disabled = false;
+              rnb.removeAttribute("aria-disabled");
+              rnb.classList.remove("disabled");
+              rnb.classList.remove("hidden-for-audio");
+              rnb.click();
+            }
+          };
+        }
+      } else {
+        playErrorBuzz();
+
+        g.innerHTML = `
+          <div class="quiz-container quiz-results-card" style="border-color:#ef4444;padding:24px 20px">
+            <div style="font-size:46px;margin-bottom:8px">💪</div>
+            <h2 style="font-size:22px;margin:0 0 6px;color:#14213d">अच्छा प्रयास!</h2>
+            <p style="color:var(--mut);font-size:15px;margin:0 0 18px">
+              आपने <b>${correctCount} / ${totalAttempted}</b> सही किए।<br>
+              बाकी <b>${incorrectIndices.length}</b> प्रश्नों को एक बार फिर से हल करें!
+            </p>
+
+            <button type="button" class="btn y" id="retryWrongBtn" style="width:100%;font-size:16px;font-weight:900;padding:12px;border:2.5px solid #14213d;box-shadow:3px 4px 0 #14213d;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px">
+              <span>🔄 गलत प्रश्न दोबारा हल करें (${incorrectIndices.length}) →</span>
+            </button>
+          </div>
+        `;
+
+        g.querySelector("#retryWrongBtn").onclick = () => {
+          queue = [...incorrectIndices];
+          queueIndex = 0;
+          renderQuestion();
+        };
+      }
+    }
+
+    renderQuestion();
+    return true;
+  },
+  calc:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="row"><input id="a" type="number" value="${s.a}" aria-label="First number"><select id="op">${["+","-","*","/"].map(o=>`<option value="${o}" ${o===s.o?"selected":""}>${o.replace("*","×").replace("/","÷").replace("-","−")}</option>`).join("")}</select><input id="b" type="number" value="${s.b}" aria-label="Second number"></div>
+  <p><button class="btn" id="go">Process ▶</button></p><div class="ipo"><div id="i1"><small>INPUT</small><span id="iv"></span></div><div id="i2"><small>PROCESSING</small><span id="pv">Waiting</span></div><div id="i3"><small>OUTPUT</small><span id="ov">?</span></div></div><p class="cmp">यह learning simulator है, असली Windows Calculator नहीं।</p>`;
+  const q=x=>g.querySelector(x),sh=n=>["i1","i2","i3"].forEach((x,k)=>q("#"+x).classList.toggle("on",k===n));
+  const upd=()=>q("#iv").textContent=`${q("#a").value} ${q("#op").selectedOptions[0].text} ${q("#b").value}`;upd();["#a","#b","#op"].forEach(x=>q(x).oninput=upd);
+  q("#go").onclick=()=>{const x=+q("#a").value,y=+q("#b").value,o=q("#op").value;sh(0);q("#pv").textContent="Waiting";q("#ov").textContent="?";
+   setTimeout(()=>{sh(1);q("#pv").textContent="Working…"},600);
+   setTimeout(()=>{sh(2);const r=o==="+"?x+y:o==="-"?x-y:o==="*"?x*y:(y===0?"÷ 0 नहीं हो सकता":+(x/y).toFixed(4));q("#pv").textContent="Done";q("#ov").textContent=r;log("calc",{x,o,y,r});done()},1300)};return true},
+ ctx:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="sim" id="ar"><div class="ic" id="fo"><span>📁</span>My Documents</div><div class="menu" id="mn"></div></div><p id="stt" class="cmp">Folder पर Right Click करके शुरुआत करें।</p><button class="btn o" id="tm">👆 Touch mode: OFF</button><p class="cmp">${s.note}</p>`;
+  const ar=g.querySelector("#ar"),mn=g.querySelector("#mn"),st=g.querySelector("#stt");let touch=0;const seen={};
+  const menus={f:["Open","Rename","Copy","Cut","Paste","Delete","Properties"],e:["View","Sort by","Refresh","New","Display settings"]};
+  function open(k,x,y){mn.innerHTML=menus[k].map(o=>`<div>${o}</div>`).join("");mn.style.cssText=`display:block;left:${x}px;top:${y}px`;seen[k]=1;log("contextmenu",k);
+   st.textContent=k==="f"?"✅ Folder का Context Menu खुला। Rename, Copy, Delete जैसे options देखो।":"✅ खाली जगह का Context Menu खुला। देखो, options अलग हैं!";
+   mn.querySelectorAll("div").forEach(d=>d.onclick=e=>{e.stopPropagation();st.textContent=`“${d.textContent}” — यह सिर्फ demonstration है, असली file पर कुछ नहीं हुआ।`;mn.style.display="none"});
+   if(seen.f&&seen.e)done()}
+  const pos=e=>{const r=ar.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+  ar.oncontextmenu=e=>{e.preventDefault();open(e.target.closest("#fo")?"f":"e",...pos(e))};
+  ar.onclick=e=>{if(touch)open(e.target.closest("#fo")?"f":"e",...pos(e));else mn.style.display="none"};
+  g.querySelector("#tm").onclick=e=>{touch=!touch;e.target.textContent="👆 Touch mode: "+(touch?"ON":"OFF")};return true},
+ scr:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="scr" id="sb">${s.sec.map((x,k)=>`<div class="sec"><h3>${x}</h3><p>Section ${k+1} — Scroll to explore more.</p></div>`).join("")}</div><div class="bar"><i id="pb" style="width:0"></i></div><p id="pt" class="cmp">Practice progress: 0%</p>`;
+  const b=g.querySelector("#sb");b.onscroll=()=>{const p=Math.min(100,Math.round(b.scrollTop/(b.scrollHeight-b.clientHeight)*100));g.querySelector("#pb").style.width=p+"%";g.querySelector("#pt").textContent="Practice progress: "+p+"%"+(p>=100?" 🎉 तुम नीचे पहुँच गए!":"");if(p>=100){log("scroll_done",CURL);done()}};return true},
+ dd:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="ddw"><div class="fl" id="fi" draggable="true">📄 Notes.txt</div><div class="dz" id="dz">📁 Study Folder<small>File यहाँ छोड़ो</small></div></div><p id="ds" class="cmp">Not moved</p><button class="btn o" id="db">Tap: file को folder में रखो</button>`;
+   const fi=g.querySelector("#fi"),dz=g.querySelector("#dz"),ds=g.querySelector("#ds");
+   let ddAttempts = 0;
+   const ok=()=>{
+     ddAttempts++;
+     dz.appendChild(fi);fi.draggable=false;
+     ds.innerHTML="<span style='color:#15803d;font-weight:800'>✅ Notes.txt अब Study Folder में है!</span> " + (ddAttempts===1 ? "<span class='first-try-tag'>🎯 1st Try! +10 🟡</span>" : "<span class='attempt-tag'>+1 🟡</span>");
+     awardCoins(ddAttempts===1 ? 10 : 1, ddAttempts===1 ? "1st Try!" : "Nice!", dz);
+     g.querySelector("#db").disabled=true;log("dragdrop",CURL);done();
+   };
+   fi.ondragstart=e=>{e.dataTransfer.setData("text","n");ds.textContent="Dragging… folder के ऊपर छोड़ो।";};
+   dz.ondragover=e=>{e.preventDefault();dz.classList.add("hot");};
+   dz.ondragleave=()=>dz.classList.remove("hot");
+   dz.ondrop=e=>{e.preventDefault();dz.classList.remove("hot");ok();};
+   g.querySelector("#db").onclick=ok;return true},
+ clk:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="sim"><div class="ic" id="fo" tabindex="0"><span>📁</span>Study Folder</div></div><p id="cs" class="cmp">Folder पर ${s.m==="d"?"Double Click":"Single Click"} करो।</p>`;
+   const f=g.querySelector("#fo"),c=g.querySelector("#cs");
+   let clkAttempts = 0;
+   f.onclick=()=>{
+     clkAttempts++;
+     f.classList.add("sel");
+     if(s.m!=="d"){
+       c.innerHTML="<span style='color:#15803d;font-weight:800'>✅ Folder select हो गया!</span> " + (clkAttempts===1 ? "<span class='first-try-tag'>🎯 1st Try! +10 🟡</span>" : "<span class='attempt-tag'>+1 🟡</span>");
+       awardCoins(clkAttempts===1 ? 10 : 1, clkAttempts===1 ? "1st Try!" : "Nice!", f);
+       done();
+     }
+   };
+   f.ondblclick=()=>{
+     if(s.m==="d"){
+       f.firstChild.textContent="📂";
+       c.innerHTML="<span style='color:#15803d;font-weight:800'>✅ Folder open हो गया!</span> " + (clkAttempts<=1 ? "<span class='first-try-tag'>🎯 1st Try! +10 🟡</span>" : "<span class='attempt-tag'>+1 🟡</span>");
+       awardCoins(clkAttempts<=1 ? 10 : 1, clkAttempts<=1 ? "1st Try!" : "Nice!", f);
+       done();
+     }
+   };
+   return true},
+ kbx:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="kbs">${s.sec.map((x,k)=>`<button class="opt" data-k="${k}">${x.n}</button>`).join("")}</div><div class="kd" id="kd">किसी section पर click करो।</div><p id="kp" class="cmp">0/${s.sec.length} sections देखे</p>`;
+  const seen=new Set();g.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{const x=s.sec[b.dataset.k];seen.add(b.dataset.k);b.classList.add("ok");g.querySelector("#kd").innerHTML=`<h3>${x.n}</h3><p>${x.k.split(" ").map(c=>`<kbd>${c}</kbd>`).join("")}</p><p>${x.d}</p>`;g.querySelector("#kp").textContent=`${seen.size}/${s.sec.length} sections देखे`;log("keysection",x.n);if(seen.size===s.sec.length)done()});return true},
+ typ:(g,s,done)=>{let cur=0;const fin=new Set();
+  g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="tabs">${s.tg.map((x,k)=>`<button class="btn o" data-t="${k}">${x.n}</button>`).join("")}</div><div class="tg" id="tg"></div><input id="ti" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Type here"><p id="tc" class="cmp"></p><div class="bar"><i id="tp" style="width:0"></i></div><div class="vk" id="vk"></div>`;
+  const ti=g.querySelector("#ti"),vk=g.querySelector("#vk");
+  function show(){const t=s.tg[cur].t,v=ti.value;g.querySelector("#tg").innerHTML=[...t].map((c,k)=>`<span class="${k<v.length?(v[k]===c?"gd":"bd"):""}">${c}</span>`).join("");
+   const okc=[...v].filter((c,k)=>c===t[k]).length;g.querySelector("#tc").textContent=`Characters typed: ${v.length}/${t.length}`;g.querySelector("#tp").style.width=Math.round(okc/t.length*100)+"%";
+   if(v===t&&!fin.has(cur)){fin.add(cur);log("typed",{lesson:CURL,t});g.querySelector("#tc").textContent+=" ✅ बहुत बढ़िया!";if(fin.size===s.tg.length)done()}}
+  ti.oninput=()=>{ti.value=ti.value.toUpperCase().slice(0,s.tg[cur].t.length);show()};
+  g.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{cur=+b.dataset.t;ti.value="";show();ti.focus()});
+  [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"].forEach(c=>{const b=el(`<button class="key">${c}</button>`);b.onclick=()=>{ti.value=(ti.value+c).slice(0,s.tg[cur].t.length);show()};vk.appendChild(b)});
+  const bs=el(`<button class="key wide">⌫ Backspace</button>`);bs.onclick=()=>{ti.value=ti.value.slice(0,-1);show()};vk.appendChild(bs);show();return true},
+ ed:(g,s,done)=>{let t="HELLO",c=5,caps=0,sh=0;const used=new Set(),need=["Space","Enter","Backspace","Delete","Shift","Caps Lock"];
+  g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="edt" id="ev"></div><p id="ec" class="cmp"></p><div class="vk" id="vk"></div><div class="vk" id="sk"></div><div id="ck" class="cmp"></div><p class="cmp">${s.note}</p>`;
+  const ev=g.querySelector("#ev");
+  function show(){ev.innerHTML=(esc(t.slice(0,c))+'<span class="cur">|</span>'+esc(t.slice(c))).replace(/\n/g,"↵<br>");
+   g.querySelector("#ec").textContent=`Cursor position: ${c} · Shift: ${sh?"ON":"OFF"} · Caps Lock: ${caps?"ON":"OFF"}`;
+   g.querySelector("#ck").textContent="आज़माए: "+need.map(n=>(used.has(n)?"✅ ":"⬜ ")+n).join("  ");if(used.size===need.length)done()}
+  const ins=x=>{t=t.slice(0,c)+x+t.slice(c);c+=x.length};
+  [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].forEach(L=>{const b=el(`<button class="key">${L}</button>`);b.onclick=()=>{ins((!!caps!==!!sh)?L:L.toLowerCase());sh=0;show()};g.querySelector("#vk").appendChild(b)});
+  [["Space",()=>ins(" ")],["Enter",()=>ins("\n")],["Backspace",()=>{if(c>0){t=t.slice(0,c-1)+t.slice(c);c--}}],["Delete",()=>{t=t.slice(0,c)+t.slice(c+1)}],["Shift",()=>{sh=sh?0:1}],["Caps Lock",()=>{caps=caps?0:1}],["←",()=>{c=Math.max(0,c-1)}],["→",()=>{c=Math.min(t.length,c+1)}]].forEach(([n,f])=>{
+   const b=el(`<button class="key wide">${n}</button>`);b.onclick=()=>{f();if(need.includes(n))used.add(n);show()};g.querySelector("#sk").appendChild(b)});
+  show();return true},
+ pt:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><div class="sim" id="ar" style="display:flex;gap:10px;flex-wrap:wrap;align-content:flex-start"></div><p id="pc" class="cmp"></p><button class="btn o" id="pa">Practice again</button><p class="cmp">${s.note}</p>`;
+  const ar=g.querySelector("#ar"),pc=g.querySelector("#pc");let f=new Set();
+  function draw(){ar.innerHTML=s.it.map((x,k)=>`<div class="ic ${f.has(k)?"sel":""}" data-k="${k}" tabindex="0" role="button"><span>${x[0]}</span>${x[1]}<small>${f.has(k)?"✅ Found":"Click to point"}</small></div>`).join("");pc.textContent=`Targets found: ${f.size}/${s.it.length}`;
+   ar.querySelectorAll("[data-k]").forEach(n=>{n.onclick=()=>{f.add(+n.dataset.k);log("target",s.it[n.dataset.k][1]);draw();if(f.size===s.it.length)done()};n.onkeydown=e=>{if(e.key==="Enter"||e.key===" ")n.click()}})}
+  g.querySelector("#pa").onclick=()=>{f=new Set();draw()};draw();return true},
+ tgt:(g,s,done)=>{const SH=[["●","Circle"],["■","Square"],["★","Star"],["▲","Triangle"]],CO=[["#1d4e89","Blue"],["#c0392b","Red"],["#1b7f5c","Green"],["#e0a800","Yellow"]];
+  const all=SH.flatMap(a=>CO.map(c=>({s:a[0],c:c[0],n:c[1]+" "+a[1]})));let r=0,ok=0,bad=0,tg;
+  g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><p class="big" id="tn"></p><div class="tgt" id="tgr"></div><p id="tr" class="cmp"></p>`;
+  const upd=()=>g.querySelector("#tr").textContent=`Correct clicks: ${ok} · Wrong clicks: ${bad}`;
+  function round(){tg=all[Math.floor(Math.random()*all.length)];const o=[tg,...all.filter(x=>x!==tg).sort(()=>Math.random()-.5).slice(0,8)].sort(()=>Math.random()-.5);
+   g.querySelector("#tn").textContent=`Target ${r+1}/${s.n}: ${tg.n}`;const bx=g.querySelector("#tgr");
+   bx.innerHTML=o.map((x,k)=>`<button class="shp" data-k="${k}" style="color:${x.c}" aria-label="${x.n}">${x.s}</button>`).join("");
+   bx.querySelectorAll("button").forEach(b=>b.onclick=()=>{if(o[b.dataset.k]===tg){ok++;r++;log("target",{ok,bad});if(r===s.n){g.querySelector("#tn").textContent="🎉 सारे targets पूरे!";bx.innerHTML="";done()}else round()}else{bad++;b.classList.add("no")}upd()})}
+  round();upd();return true},
+ wr:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p>${li(s.l)}<div class="edt" style="padding:0"><textarea id="wt" rows="6" placeholder="Start typing your paragraph here..." style="border:0;font:20px/1.5 monospace"></textarea></div><p id="wc" class="cmp"></p><button class="btn o" id="ex">Load Example Paragraph</button><p class="cmp">यह practice editor है, असली Windows Notepad नहीं। तुम्हारा text सिर्फ इसी activity में रहता है।</p>`;
+  const t=g.querySelector("#wt"),c=g.querySelector("#wc");let fin=0;
+  const upd=()=>{const w=t.value.trim()?t.value.trim().split(/\s+/).length:0,ok=w>=s.min&&/[.!?]/.test(t.value);
+   c.textContent=`Words: ${w} · Characters: ${t.value.length}`+(ok?" ✅ बहुत अच्छा!":` — कम से कम ${s.min} words और एक full stop लिखो`);if(ok&&!fin){fin=1;log("writing",{words:w});done()}};
+  t.oninput=upd;g.querySelector("#ex").onclick=()=>{t.value=s.ex;upd()};upd();return true},
+ frm:(g,s,done)=>{g.innerHTML=`<h2>${s.h}</h2><p>${s.p}</p><label>Your Name<input id="f1" autocomplete="off"></label><label>School Name<input id="f2" autocomplete="off"></label><label>Class<select id="f3"><option value="">चुनो…</option>${[6,7,8,9,10,11,12].map(c=>`<option>${c}</option>`).join("")}</select></label><p id="fp" class="big"></p><p class="cmp">This is a typing practice activity, not a saved Windows document.</p>`;
+  const q=x=>g.querySelector(x);let fin=0;
+  const upd=()=>{const a=q("#f1").value.trim(),b=q("#f2").value.trim(),c=q("#f3").value;if(a&&b&&c){q("#fp").textContent=`My name is ${a}. I study in Class ${c} at ${b}.`;if(!fin){fin=1;log("intro_done",CURL);done()}}else q("#fp").textContent=""};
+  ["#f1","#f2","#f3"].forEach(x=>q(x).oninput=upd);return true},
+ sim_task:(g,s,done)=>{mountSimulator(g,s,done);return true},
+ end:(g,s)=>{g.innerHTML=`<div class="ill">${ill("desktop")}</div><h2>आज तुमने क्या सीखा?</h2>${li(s.l)}${s.m?`<p class="big">${s.m}</p>`:""}<p><b>Final reflection:</b> ${s.r}</p><textarea id="rf" rows="3" placeholder="अपना जवाब यहाँ लिखो…"></textarea>`;
+  const rf = g.querySelector("#rf");
+  if(rf){
+    rf.value = (S.done[CURL]||{}).reflection || "";
+    rf.oninput = (e) => { S.done[CURL] = S.done[CURL] || {}; S.done[CURL].reflection = e.target.value; save(); };
+  }}
+};
+
+/* ============ REAL COMPUTER PRACTICE SIMULATOR & ASSIGNMENT ENGINE ============ */
+function evaluateSimTask(tId, st){
+  switch(tId){
+    case "new_folder": return st.folders.length > 0;
+    case "rename_school": return st.folders.some(f => ["school","notes","study","work","स्कूल","नोट्स","किताब"].includes(f.toLowerCase()));
+    case "user_folder": return st.folders.some(f => S.user && f.toLowerCase() === S.user.name.toLowerCase());
+    case "open_start": return !!st.startOpened;
+    case "delete_folder":
+    case "delete_item":
+    case "delete_key": return st.deletedCount > 0 || (st.recycled && st.recycled.length > 0);
+    case "rc_desktop": return !!st.desktopRightClicked;
+    case "rc_folder": return !!st.folderRightClicked;
+    case "single_click": return !!st.singleClicked;
+    case "open_item": return !!st.doubleClicked || !!st.notepadOpened;
+    case "open_notepad": return !!st.notepadOpened;
+    case "type_text": return (st.notepadText || "").trim().length >= 4;
+    case "refresh": return !!st.refreshed;
+    default: return false;
+  }
+}
+
+function mountSimulator(container, config, onDone){
+  const tasks = config.tasks || [
+    { id: "new_folder", desc: "Desktop पर एक नया Folder बनाओ", hint: "Right Click करके 'New folder' चुनो या ऊपर ➕ New folder बटन दबाओ।" },
+    { id: "rename_school", desc: "Folder का नाम बदलकर 'School' या 'Notes' रखो", hint: "Folder पर Double Click करो या Right Click करके Rename चुनो।" },
+    { id: "user_folder", desc: `अपने नाम (${S.user ? S.user.name : "Learner"}) से एक Folder बनाओ`, hint: "नया folder बनाकर उस पर अपना नाम लिखो।" },
+    { id: "open_start", desc: "Start Menu (⊞ Start) खोलकर देखो", hint: "Taskbar पर ⊞ Start बटन दबाओ।" },
+    { id: "open_notepad", desc: "Notepad या Calculator खोलो और कार्य करो", hint: "Start Menu से Notepad खोलो या Desktop पर Notes.txt पर double click करो।" },
+    { id: "delete_folder", desc: "किसी Folder को Delete करके Recycle Bin में भेजो", hint: "Folder select करो और 🗑 Delete बटन या Delete key दबाओ।" }
+  ];
+
+  const isStandalone = !!config.standalone;
+  const assignmentKey = (CURL || "standalone") + "_" + (config.id || "sim");
+  S.sim_verified = S.sim_verified || {};
+  let alreadyVerified = !!S.sim_verified[assignmentKey];
+
+  const simState = {
+    folders: [...S.sim.folders],
+    recycled: S.sim.recycled ? [...S.sim.recycled] : [],
+    selected: null,
+    startOpened: false,
+    notepadOpened: false,
+    notepadText: "",
+    calcOpened: false,
+    paintOpened: false,
+    explorerOpened: false,
+    binOpened: false,
+    desktopRightClicked: false,
+    folderRightClicked: false,
+    singleClicked: false,
+    doubleClicked: false,
+    deletedCount: 0,
+    refreshed: false
+  };
+
+  const html = `
+    <div class="sim-assign-box">
+      ${isStandalone ? `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <button class="btn o" id="simBk">← Home</button>
+          <span class="part-badge done">Verified Practice Hub</span>
+        </div>
+        <h1>💻 Real Computer Practice Lab</h1>
+        <div class="card" style="margin-bottom:12px;background:#14213d;color:#fff">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:32px">🎓</span>
+            <div>
+              <b style="font-size:18px">${esc(S.user ? S.user.name : "Learner")} · Class ${esc(S.user ? S.user.cls : "")}</b>
+              <small style="display:block;opacity:.85">Windows 11 Desktop, Apps & Files Interactive Practice Assignment</small>
+            </div>
+          </div>
+        </div>
+      ` : `
+        <h2>${esc(config.h || "Real Computer Practice")}</h2>
+        <p>${esc(config.p || "नीचे दिए गए सभी Tasks को Simulator में पूरा करें। जब तक सारे काम पूरे नहीं होंगे, अगला कदम अनलॉक नहीं होगा!")}</p>
+      `}
+
+      <div class="sim-lock-banner ${alreadyVerified ? "unlocked" : ""}" id="simBanner">
+        <span style="font-size:24px" id="simBannerIcon">${alreadyVerified ? "🎉" : "🔒"}</span>
+        <div style="flex:1">
+          <b id="simBannerTitle">${alreadyVerified ? "Assignment Verified & Completed!" : "Real Computer Practice — Mandatory Assignment"}</b>
+          <div id="simBannerSub" style="font-size:13px;opacity:.9">
+            ${alreadyVerified ? "सभी Tasks सफलतापूर्वक Verify हो चुके हैं। अगला कदम अनलॉक है!" : "जब तक नीचे दिए गए सभी Tasks Simulator में पूरे नहीं होंगे, 'आगे →' बटन लॉक रहेगा!"}
+          </div>
+        </div>
+        <span class="part-badge ${alreadyVerified ? "done" : ""}" id="simStatusBadge">${alreadyVerified ? "VERIFIED ✅" : "LOCKED 🔒"}</span>
+      </div>
+
+      <div class="sim-tasks-card">
+        <div class="sim-tasks-head">
+          <span>📋 Assignment Tasks (${tasks.length} कुल)</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="sim-attempts-pill" id="simAttemptBadge">🎯 प्रयास: 1</span>
+            <span id="simCount">0 / ${tasks.length} पूरे</span>
+          </div>
+        </div>
+        <div class="bar" style="margin-bottom:12px"><i id="simProgress" style="width:0%"></i></div>
+        <div id="simTasksList"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn y" id="simVerifyBtn" style="font-size:14px;font-weight:900;border:2.5px solid #14213d;box-shadow:2.5px 3.5px 0 #14213d;padding:8px 16px;border-radius:10px;display:flex;align-items:center;gap:6px">
+            <span>⚡ Verify & Submit Assignment</span>
+          </button>
+          <span id="simVerifyMsg" style="font-size:12px;font-weight:700;color:var(--mut)">सभी tasks पूरे करके Submit करें</span>
+        </div>
+      </div>
+
+      <!-- Desktop Screen -->
+      <div class="desk-box" id="simDesk" tabindex="0">
+        <!-- Floating Notepad Window -->
+        <div class="sim-win" id="notepadWin">
+          <div class="sim-win-bar">
+            <span>📝 Notepad - Notes.txt</span>
+            <div class="sim-win-ctrls">
+              <span class="sim-win-btn" id="minNotepad">🗕</span>
+              <span class="sim-win-btn close" id="closeNotepad">✕</span>
+            </div>
+          </div>
+          <div style="background:#f8fafc;padding:4px 10px;font-size:12px;font-weight:700;color:#64748b;border-bottom:1px solid #e2e8f0;display:flex;gap:12px">
+            <span>File</span><span>Edit</span><span>View</span>
+          </div>
+          <div class="sim-win-body">
+            <textarea id="notepadText" placeholder="Start typing your notes here..."></textarea>
+            <div style="font-size:12px;color:var(--mut);margin-top:4px;display:flex;justify-content:space-between;align-items:center">
+              <span>Characters: <b id="npCount">0</b></span>
+              <div style="display:flex;gap:6px">
+                <button class="btn o" id="npClear" style="padding:2px 8px;font-size:11px">Clear</button>
+                <button class="btn y" id="npSave" style="padding:2px 10px;font-size:11px;font-weight:800;border:1.5px solid #14213d">Save File</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Calculator Window -->
+        <div class="sim-win" id="calcWin" style="width:280px">
+          <div class="sim-win-bar">
+            <span>🧮 Calculator</span>
+            <div class="sim-win-ctrls">
+              <span class="sim-win-btn" id="minCalc">🗕</span>
+              <span class="sim-win-btn close" id="closeCalc">✕</span>
+            </div>
+          </div>
+          <div class="calc-screen" id="calcScreen">0</div>
+          <div class="calc-grid">
+            <button type="button" class="calc-btn clear" data-c="C">C</button>
+            <button type="button" class="calc-btn" data-c="bs">⌫</button>
+            <button type="button" class="calc-btn op" data-c="/">÷</button>
+            <button type="button" class="calc-btn op" data-c="*">×</button>
+            <button type="button" class="calc-btn" data-c="7">7</button>
+            <button type="button" class="calc-btn" data-c="8">8</button>
+            <button type="button" class="calc-btn" data-c="9">9</button>
+            <button type="button" class="calc-btn op" data-c="-">−</button>
+            <button type="button" class="calc-btn" data-c="4">4</button>
+            <button type="button" class="calc-btn" data-c="5">5</button>
+            <button type="button" class="calc-btn" data-c="6">6</button>
+            <button type="button" class="calc-btn op" data-c="+">+</button>
+            <button type="button" class="calc-btn" data-c="1">1</button>
+            <button type="button" class="calc-btn" data-c="2">2</button>
+            <button type="button" class="calc-btn" data-c="3">3</button>
+            <button type="button" class="calc-btn eq" data-c="=">=</button>
+            <button type="button" class="calc-btn" data-c="0" style="grid-column:span 2">0</button>
+            <button type="button" class="calc-btn" data-c=".">.</button>
+          </div>
+        </div>
+
+        <!-- Floating Paint Window -->
+        <div class="sim-win" id="paintWin" style="width:340px">
+          <div class="sim-win-bar">
+            <span>🎨 Paint - Drawing Canvas</span>
+            <div class="sim-win-ctrls">
+              <span class="sim-win-btn" id="minPaint">🗕</span>
+              <span class="sim-win-btn close" id="closePaint">✕</span>
+            </div>
+          </div>
+          <div class="paint-toolbar">
+            <div class="paint-colors">
+              <span class="paint-swatch active" data-color="#000000" style="background:#000000" title="Black"></span>
+              <span class="paint-swatch" data-color="#2563eb" style="background:#2563eb" title="Blue"></span>
+              <span class="paint-swatch" data-color="#dc2626" style="background:#dc2626" title="Red"></span>
+              <span class="paint-swatch" data-color="#16a34a" style="background:#16a34a" title="Green"></span>
+              <span class="paint-swatch" data-color="#ca8a04" style="background:#ca8a04" title="Yellow"></span>
+            </div>
+            <button type="button" class="btn o" id="paintClear" style="padding:2px 8px;font-size:11px">Clear</button>
+          </div>
+          <div class="paint-canvas-wrap">
+            <canvas id="paintCanvas" width="310" height="150" class="paint-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Floating Explorer Window -->
+        <div class="sim-win" id="explorerWin" style="width:360px">
+          <div class="sim-win-bar">
+            <span>📁 File Explorer - Desktop</span>
+            <div class="sim-win-ctrls">
+              <span class="sim-win-btn" id="minExp">🗕</span>
+              <span class="sim-win-btn close" id="closeExp">✕</span>
+            </div>
+          </div>
+          <div class="exp-address-bar">
+            <span>🖥️ This PC &gt; Desktop</span>
+          </div>
+          <div class="exp-items-list" id="expList"></div>
+        </div>
+
+        <!-- Floating Recycle Bin Window -->
+        <div class="sim-win" id="binWin" style="width:360px">
+          <div class="sim-win-bar">
+            <span>🗑️ Recycle Bin</span>
+            <div class="sim-win-ctrls">
+              <span class="sim-win-btn" id="minBin">🗕</span>
+              <span class="sim-win-btn close" id="closeBin">✕</span>
+            </div>
+          </div>
+          <div style="background:#f8fafc;padding:6px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid #e2e8f0">
+            <span style="font-size:12px;font-weight:700;color:#64748b" id="binItemCount">0 items</span>
+            <div style="display:flex;gap:6px">
+              <button type="button" class="btn o" id="binRestoreAll" style="padding:2px 8px;font-size:11px">Restore All</button>
+              <button type="button" class="btn o" id="binEmpty" style="padding:2px 8px;font-size:11px;color:#dc2626">Empty Bin</button>
+            </div>
+          </div>
+          <div class="exp-items-list" id="binList"></div>
+        </div>
+
+        <!-- In-Simulator Custom Dialog (Modal) -->
+        <div class="sim-dialog-overlay" id="simModal">
+          <div class="sim-dialog-card">
+            <div class="sim-dialog-header">
+              <span id="modalHeaderTitle">Dialog</span>
+              <span class="sim-win-btn close" id="modalClose">✕</span>
+            </div>
+            <div class="sim-dialog-body">
+              <p id="modalMsg" style="margin:0;font-size:14px;font-weight:700;color:#1e293b"></p>
+              <input type="text" id="modalInput" style="display:none">
+              <div class="sim-dialog-actions" id="modalActions"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Start Menu -->
+        <div class="start-menu" id="startMenu">
+          <div class="start-search-bar">
+            <span>🔍</span>
+            <input type="text" placeholder="Type here to search apps, files...">
+          </div>
+          <div style="font-size:12px;font-weight:800;color:var(--mut);margin-bottom:8px">PINNED APPS</div>
+          <div class="start-grid">
+            <div class="start-app" id="appNotepad"><span>📝</span>Notepad</div>
+            <div class="start-app" id="appCalc"><span>🧮</span>Calculator</div>
+            <div class="start-app" id="appPaint"><span>🎨</span>Paint</div>
+            <div class="start-app" id="appExplorer"><span>📁</span>Explorer</div>
+            <div class="start-app" id="appBin"><span>🗑️</span>Recycle Bin</div>
+            <div class="start-app" id="appSettings"><span>⚙️</span>Settings</div>
+          </div>
+          <div class="start-head" style="margin-top:14px;padding-top:10px;padding-bottom:0;border-bottom:none;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="start-avatar">${esc((S.user ? S.user.name : "U").charAt(0).toUpperCase())}</div>
+              <div>
+                <div class="start-user-name">${esc(S.user ? S.user.name : "Learner")}</div>
+                <div class="start-user-cls">Class ${esc(S.user ? S.user.cls : "")}</div>
+              </div>
+            </div>
+            <button type="button" id="startPowerBtn" title="Power Options" style="background:none;border:none;font-size:18px;cursor:pointer">⏻</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Windows 11 Taskbar -->
+      <div class="taskbar">
+        <button type="button" class="start-btn" id="startBtn">⊞ Start</button>
+        <div class="tb-running-apps" id="tbRunningApps"></div>
+        <div class="tb-systray">
+          <span title="Internet: Connected">📶</span>
+          <span title="Audio: 100%">🔊</span>
+          <span title="Battery: 100%">🔋</span>
+          <span class="tb-clock" id="simClock">10:00 AM</span>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:8px">
+        <span class="cmp" id="simLastAction">Last action: Ready</span>
+        ${isStandalone ? `<button class="btn o" id="simExport">📥 Download Verification Record</button>` : ""}
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+
+  const desk = container.querySelector("#simDesk");
+  let cm = $("#cm");
+  if(!cm){cm = el('<div id="cm"></div>'); document.body.appendChild(cm);}
+  const startBtn = container.querySelector("#startBtn");
+  const startMenu = container.querySelector("#startMenu");
+  const simBanner = container.querySelector("#simBanner");
+  const simBannerIcon = container.querySelector("#simBannerIcon");
+  const simBannerTitle = container.querySelector("#simBannerTitle");
+  const simBannerSub = container.querySelector("#simBannerSub");
+  const simStatusBadge = container.querySelector("#simStatusBadge");
+  const simCount = container.querySelector("#simCount");
+  const simProgress = container.querySelector("#simProgress");
+  const simTasksList = container.querySelector("#simTasksList");
+  const simLastAction = container.querySelector("#simLastAction");
+  const tbRunningApps = container.querySelector("#tbRunningApps");
+
+  // Custom in-simulator dialog helper (No browser prompt/alert!)
+  const simModal = container.querySelector("#simModal");
+  const modalHeaderTitle = container.querySelector("#modalHeaderTitle");
+  const modalMsg = container.querySelector("#modalMsg");
+  const modalInput = container.querySelector("#modalInput");
+  const modalActions = container.querySelector("#modalActions");
+  const modalClose = container.querySelector("#modalClose");
+
+  function openSimDialog({ title, msg, inputVal, onConfirm, showCancel = true }){
+    modalHeaderTitle.textContent = title || "Windows Message";
+    modalMsg.textContent = msg || "";
+    if (inputVal !== undefined) {
+      modalInput.style.display = "block";
+      modalInput.value = inputVal;
+      setTimeout(() => { modalInput.focus(); modalInput.select(); }, 50);
+    } else {
+      modalInput.style.display = "none";
+    }
+
+    modalActions.innerHTML = "";
+    if (showCancel) {
+      const cancelBtn = el('<button type="button" class="btn o" style="padding:6px 14px">Cancel</button>');
+      cancelBtn.onclick = () => { simModal.classList.remove("open"); };
+      modalActions.appendChild(cancelBtn);
+    }
+    const okBtn = el('<button type="button" class="btn y" style="padding:6px 16px;font-weight:900;border:2px solid #14213d">OK</button>');
+    okBtn.onclick = () => {
+      simModal.classList.remove("open");
+      if (onConfirm) onConfirm(modalInput.style.display !== "none" ? modalInput.value : true);
+    };
+    modalActions.appendChild(okBtn);
+
+    modalClose.onclick = () => { simModal.classList.remove("open"); };
+    simModal.classList.add("open");
+  }
+
+  // Windows Active Taskbar Pills Manager
+  function updateTaskbarApps(){
+    tbRunningApps.innerHTML = "";
+    const activeWins = [
+      { id: "notepadWin", name: "Notes.txt", icon: "📝", open: simState.notepadOpened },
+      { id: "calcWin", name: "Calculator", icon: "🧮", open: simState.calcOpened },
+      { id: "paintWin", name: "Paint", icon: "🎨", open: simState.paintOpened },
+      { id: "explorerWin", name: "Explorer", icon: "📁", open: simState.explorerOpened },
+      { id: "binWin", name: "Recycle Bin", icon: "🗑️", open: simState.binOpened }
+    ];
+
+    activeWins.forEach(app => {
+      if(app.open){
+        const winEl = container.querySelector("#" + app.id);
+        const isOpen = winEl && winEl.classList.contains("open");
+        const pill = el(`<div class="tb-app-pill ${isOpen ? "active" : ""}"><span>${app.icon}</span><span>${app.name}</span></div>`);
+        pill.onclick = () => {
+          if(isOpen){
+            winEl.classList.remove("open");
+          } else {
+            bringToFront(winEl);
+          }
+          updateTaskbarApps();
+        };
+        tbRunningApps.appendChild(pill);
+      }
+    });
+  }
+
+  function bringToFront(winEl){
+    container.querySelectorAll(".sim-win").forEach(w => w.classList.remove("focused"));
+    winEl.classList.add("open");
+    winEl.classList.add("focused");
+    updateTaskbarApps();
+  }
+
+  // Window 1: Notepad
+  const notepadWin = container.querySelector("#notepadWin");
+  const notepadText = container.querySelector("#notepadText");
+  function openNotepad(){
+    simState.notepadOpened = true;
+    bringToFront(notepadWin);
+    notepadText.focus();
+    simLastAction.textContent = "Last action: Notepad opened";
+    updateTasksUI();
+  }
+  container.querySelector("#closeNotepad").onclick = () => { notepadWin.classList.remove("open"); simState.notepadOpened = false; updateTaskbarApps(); };
+  container.querySelector("#minNotepad").onclick = () => { notepadWin.classList.remove("open"); updateTaskbarApps(); };
+  notepadText.oninput = () => {
+    simState.notepadText = notepadText.value;
+    container.querySelector("#npCount").textContent = notepadText.value.length;
+    updateTasksUI();
+  };
+  container.querySelector("#npClear").onclick = () => {
+    notepadText.value = "";
+    simState.notepadText = "";
+    container.querySelector("#npCount").textContent = 0;
+    updateTasksUI();
+  };
+  container.querySelector("#npSave").onclick = () => {
+    simLastAction.textContent = "Last action: Saved Notes.txt";
+    openSimDialog({
+      title: "File Saved",
+      msg: "✅ 'Notes.txt' successfully saved to Desktop!",
+      showCancel: false
+    });
+    updateTasksUI();
+  };
+
+  // Window 2: Working Calculator
+  const calcWin = container.querySelector("#calcWin");
+  const calcScreen = container.querySelector("#calcScreen");
+  let calcVal = "0";
+  let calcPendingOp = null;
+  let calcPrevVal = null;
+  let calcResetScreen = false;
+
+  function openCalculator(){
+    simState.calcOpened = true;
+    bringToFront(calcWin);
+    simLastAction.textContent = "Last action: Calculator launched";
+    updateTasksUI();
+  }
+  container.querySelector("#closeCalc").onclick = () => { calcWin.classList.remove("open"); simState.calcOpened = false; updateTaskbarApps(); };
+  container.querySelector("#minCalc").onclick = () => { calcWin.classList.remove("open"); updateTaskbarApps(); };
+
+  calcWin.querySelectorAll(".calc-btn").forEach(btn => {
+    btn.onclick = () => {
+      const c = btn.dataset.c;
+      if (c === "C") {
+        calcVal = "0";
+        calcPendingOp = null;
+        calcPrevVal = null;
+      } else if (c === "bs") {
+        calcVal = calcVal.length > 1 ? calcVal.slice(0, -1) : "0";
+      } else if (["+", "-", "*", "/"].includes(c)) {
+        calcPendingOp = c;
+        calcPrevVal = parseFloat(calcVal);
+        calcResetScreen = true;
+      } else if (c === "=") {
+        if (calcPendingOp && calcPrevVal !== null) {
+          const cur = parseFloat(calcVal);
+          let res = cur;
+          if (calcPendingOp === "+") res = calcPrevVal + cur;
+          if (calcPendingOp === "-") res = calcPrevVal - cur;
+          if (calcPendingOp === "*") res = calcPrevVal * cur;
+          if (calcPendingOp === "/") res = cur !== 0 ? calcPrevVal / cur : "Error";
+          calcVal = String(res).slice(0, 10);
+          calcPendingOp = null;
+          calcPrevVal = null;
+          calcResetScreen = true;
+        }
+      } else {
+        if (calcVal === "0" || calcResetScreen) {
+          calcVal = c;
+          calcResetScreen = false;
+        } else {
+          calcVal += c;
+        }
+      }
+      calcScreen.textContent = calcVal;
+    };
+  });
+
+  // Window 3: Working Paint Canvas
+  const paintWin = container.querySelector("#paintWin");
+  const paintCanvas = container.querySelector("#paintCanvas");
+  const pCtx = paintCanvas.getContext("2d");
+  let isPainting = false;
+  let paintColor = "#000000";
+
+  function openPaint(){
+    simState.paintOpened = true;
+    bringToFront(paintWin);
+    simLastAction.textContent = "Last action: Paint app launched";
+    updateTasksUI();
+  }
+  container.querySelector("#closePaint").onclick = () => { paintWin.classList.remove("open"); simState.paintOpened = false; updateTaskbarApps(); };
+  container.querySelector("#minPaint").onclick = () => { paintWin.classList.remove("open"); updateTaskbarApps(); };
+
+  paintWin.querySelectorAll(".paint-swatch").forEach(s => {
+    s.onclick = () => {
+      paintWin.querySelectorAll(".paint-swatch").forEach(sw => sw.classList.remove("active"));
+      s.classList.add("active");
+      paintColor = s.dataset.color;
+    };
+  });
+  container.querySelector("#paintClear").onclick = () => {
+    pCtx.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
+  };
+
+  const startPaint = (e) => {
+    isPainting = true;
+    pCtx.beginPath();
+    const r = paintCanvas.getBoundingClientRect();
+    const x = (e.clientX || (e.touches && e.touches[0].clientX)) - r.left;
+    const y = (e.clientY || (e.touches && e.touches[0].clientY)) - r.top;
+    pCtx.moveTo(x, y);
+  };
+  const drawPaint = (e) => {
+    if (!isPainting) return;
+    const r = paintCanvas.getBoundingClientRect();
+    const x = (e.clientX || (e.touches && e.touches[0].clientX)) - r.left;
+    const y = (e.clientY || (e.touches && e.touches[0].clientY)) - r.top;
+    pCtx.strokeStyle = paintColor;
+    pCtx.lineWidth = 3;
+    pCtx.lineCap = "round";
+    pCtx.lineTo(x, y);
+    pCtx.stroke();
+  };
+  const stopPaint = () => { isPainting = false; };
+
+  paintCanvas.addEventListener("mousedown", startPaint);
+  paintCanvas.addEventListener("mousemove", drawPaint);
+  window.addEventListener("mouseup", stopPaint);
+  paintCanvas.addEventListener("touchstart", startPaint, { passive: true });
+  paintCanvas.addEventListener("touchmove", drawPaint, { passive: true });
+  window.addEventListener("touchend", stopPaint);
+
+  // Window 4: File Explorer
+  const explorerWin = container.querySelector("#explorerWin");
+  const expList = container.querySelector("#expList");
+  function openExplorer(){
+    simState.explorerOpened = true;
+    bringToFront(explorerWin);
+    renderExplorerList();
+    simLastAction.textContent = "Last action: File Explorer opened";
+    updateTasksUI();
+  }
+  container.querySelector("#closeExp").onclick = () => { explorerWin.classList.remove("open"); simState.explorerOpened = false; updateTaskbarApps(); };
+  container.querySelector("#minExp").onclick = () => { explorerWin.classList.remove("open"); updateTaskbarApps(); };
+
+  function renderExplorerList(){
+    let h = `
+      <div class="exp-item-row" data-open="pc"><span>💻</span><b>This PC (Local Disk C:)</b></div>
+      <div class="exp-item-row" data-open="notes"><span>📝</span><b>Notes.txt</b></div>
+    `;
+    simState.folders.forEach((f, idx) => {
+      h += `<div class="exp-item-row" data-open="folder" data-idx="${idx}"><span>📁</span><b>${esc(f)}</b></div>`;
+    });
+    expList.innerHTML = h;
+
+    expList.querySelectorAll(".exp-item-row").forEach(row => {
+      row.onclick = () => {
+        const o = row.dataset.open;
+        if (o === "notes") openNotepad();
+        else if (o === "folder") {
+          const fName = simState.folders[+row.dataset.idx];
+          openSimDialog({ title: "Folder Contents", msg: `📁 Folder '${fName}' is empty (Create files inside).`, showCancel: false });
+        } else if (o === "pc") {
+          openSimDialog({ title: "This PC", msg: "Local Disk (C:) - 128 GB free of 256 GB SSD", showCancel: false });
+        }
+      };
+    });
+  }
+
+  // Window 5: Recycle Bin
+  const binWin = container.querySelector("#binWin");
+  const binList = container.querySelector("#binList");
+  const binItemCount = container.querySelector("#binItemCount");
+  function openRecycleBin(){
+    simState.binOpened = true;
+    bringToFront(binWin);
+    renderBinList();
+    simLastAction.textContent = "Last action: Recycle Bin opened";
+    updateTasksUI();
+  }
+  container.querySelector("#closeBin").onclick = () => { binWin.classList.remove("open"); simState.binOpened = false; updateTaskbarApps(); };
+  container.querySelector("#minBin").onclick = () => { binWin.classList.remove("open"); updateTaskbarApps(); };
+
+  function renderBinList(){
+    binItemCount.textContent = `${simState.recycled.length} items in Bin`;
+    if (simState.recycled.length === 0) {
+      binList.innerHTML = '<div style="text-align:center;color:var(--mut);padding:30px 10px;font-size:13px">🗑️ Recycle Bin is empty</div>';
+      return;
+    }
+    binList.innerHTML = simState.recycled.map((item, idx) => `
+      <div class="exp-item-row">
+        <span>📁</span>
+        <span style="flex:1">${esc(item)}</span>
+        <small style="color:var(--mut)">Deleted</small>
+      </div>
+    `).join("");
+  }
+
+  container.querySelector("#binEmpty").onclick = () => {
+    if (simState.recycled.length === 0) return;
+    openSimDialog({
+      title: "Empty Recycle Bin",
+      msg: "Are you sure you want to permanently delete all items in Recycle Bin?",
+      onConfirm: () => {
+        simState.recycled = [];
+        S.sim.recycled = [];
+        save();
+        renderBinList();
+        drawDesk();
+        updateTasksUI();
+        simLastAction.textContent = "Last action: Emptied Recycle Bin";
+      }
+    });
+  };
+
+  container.querySelector("#binRestoreAll").onclick = () => {
+    if (simState.recycled.length === 0) return;
+    simState.folders.push(...simState.recycled);
+    simState.recycled = [];
+    S.sim.folders = [...simState.folders];
+    S.sim.recycled = [];
+    save();
+    renderBinList();
+    drawDesk();
+    updateTasksUI();
+    simLastAction.textContent = "Last action: Restored all items to Desktop";
+  };
+
+  // Start Menu Wiring
+  startBtn.onclick = (e) => {
+    e.stopPropagation();
+    simState.startOpened = true;
+    startMenu.classList.toggle("open");
+    startBtn.classList.toggle("open", startMenu.classList.contains("open"));
+    simLastAction.textContent = "Last action: Clicked Start Menu";
+    updateTasksUI();
+  };
+
+  container.querySelector("#appNotepad").onclick = () => { startMenu.classList.remove("open"); openNotepad(); };
+  container.querySelector("#appCalc").onclick = () => { startMenu.classList.remove("open"); openCalculator(); };
+  container.querySelector("#appPaint").onclick = () => { startMenu.classList.remove("open"); openPaint(); };
+  container.querySelector("#appExplorer").onclick = () => { startMenu.classList.remove("open"); openExplorer(); };
+  container.querySelector("#appBin").onclick = () => { startMenu.classList.remove("open"); openRecycleBin(); };
+  container.querySelector("#appSettings").onclick = () => {
+    startMenu.classList.remove("open");
+    openSimDialog({ title: "Windows Settings", msg: "⚙️ System: Windows 11 Education Simulator\nResolution: 1920x1080 Full HD", showCancel: false });
+  };
+  container.querySelector("#startPowerBtn").onclick = () => {
+    startMenu.classList.remove("open");
+    openSimDialog({
+      title: "Power Options",
+      msg: "Do you want to restart Windows Desktop Simulator?",
+      onConfirm: () => {
+        simState.refreshed = true;
+        drawDesk();
+        updateTasksUI();
+        simLastAction.textContent = "Last action: Restarted Simulator";
+      }
+    });
+  };
+
+  function addFolder(){
+    let n = "New folder", k = 1;
+    while(simState.folders.includes(n)) n = `New folder (${++k})`;
+    simState.folders.push(n);
+    S.sim.folders = [...simState.folders];
+    save();
+    simState.selected = simState.folders.length - 1;
+    simLastAction.textContent = `Last action: Created "${n}"`;
+    log("sim_new_folder", n);
+    drawDesk();
+    updateTasksUI();
+  }
+
+  function deleteItem(){
+    if(simState.selected === null || simState.selected < 0) {
+      openSimDialog({ title: "Notice", msg: "हटाने के लिए पहले Desktop पर कोई Folder select करें।", showCancel: false });
+      return;
+    }
+    const idx = simState.selected;
+    const name = simState.folders[idx];
+    openSimDialog({
+      title: "Confirm Delete",
+      msg: `क्या आप "${name}" को Recycle Bin में भेजना चाहते हैं?`,
+      onConfirm: () => {
+        simState.folders.splice(idx, 1);
+        simState.recycled.push(name);
+        simState.deletedCount++;
+        S.sim.folders = [...simState.folders];
+        S.sim.recycled = [...simState.recycled];
+        save();
+        simState.selected = null;
+        simLastAction.textContent = `Last action: Deleted "${name}" → Recycle Bin`;
+        log("sim_delete", name);
+        drawDesk();
+        updateTasksUI();
+      }
+    });
+  }
+
+  function renameItem(){
+    if(simState.selected === null || simState.selected < 0) {
+      openSimDialog({ title: "Notice", msg: "Rename करने के लिए पहले कोई Folder select करें।", showCancel: false });
+      return;
+    }
+    const idx = simState.selected;
+    const old = simState.folders[idx];
+    openSimDialog({
+      title: "Rename Folder",
+      msg: "Folder का नया नाम लिखें:",
+      inputVal: old,
+      onConfirm: (newName) => {
+        if(newName && newName.trim()){
+          simState.folders[idx] = newName.trim();
+          S.sim.folders = [...simState.folders];
+          save();
+          simLastAction.textContent = `Last action: Renamed "${old}" → "${newName.trim()}"`;
+          log("sim_rename", { from: old, to: newName.trim() });
+          drawDesk();
+          updateTasksUI();
+        }
+      }
+    });
+  }
+
+  function showContextMenu(clientX, clientY, type, idx){
+    const menuItems = (type === "folder") ? [
+      { l: "📂 Open", act: () => { openSimDialog({ title: "Folder", msg: `Folder "${simState.folders[idx]}" opened! (Empty)`, showCancel: false }); } },
+      { l: "🏷️ Rename", act: renameItem },
+      { l: "📋 Copy", act: () => { simLastAction.textContent = `Last action: Copied "${simState.folders[idx]}"`; } },
+      { l: "🗑 Delete", act: deleteItem },
+      { l: "ℹ️ Properties", act: () => { openSimDialog({ title: "Properties", msg: `Name: ${simState.folders[idx]}\nType: File folder\nLocation: C:\\Users\\Desktop`, showCancel: false }); } }
+    ] : [
+      { l: "📁 New folder", act: addFolder },
+      { l: "📝 New text document", act: () => { openNotepad(); } },
+      { l: "🔄 Refresh", act: () => {
+        simState.refreshed = true;
+        simLastAction.textContent = "Last action: Refreshed Desktop";
+        drawDesk();
+        updateTasksUI();
+      } },
+      { l: "📊 Sort by", act: () => { simLastAction.textContent = "Last action: Sorted icons"; } },
+      { l: "🖥️ Display settings", act: () => { openSimDialog({ title: "Display Settings", msg: "Resolution: 1920x1080 (Recommended)\nScale: 100%", showCancel: false }); } }
+    ];
+
+    cm.innerHTML = menuItems.map((m, mi) => `<div data-mi="${mi}">${m.l}</div>`).join("");
+    const x = Math.min(clientX, window.innerWidth - 180);
+    const y = Math.min(clientY, window.innerHeight - 200);
+    cm.style.cssText = `display:block;left:${x}px;top:${y}px`;
+
+    cm.querySelectorAll("[data-mi]").forEach(d => {
+      d.onclick = (e) => {
+        e.stopPropagation();
+        cm.style.display = "none";
+        menuItems[+d.dataset.mi].act();
+      };
+    });
+  }
+
+  function drawDesk(){
+    let h = `
+      <div class="ic ${simState.selected === -1 ? "sel" : ""}" data-type="pc">
+        <span>💻</span>This PC
+      </div>
+      <div class="ic ${simState.selected === -2 ? "sel" : ""}" data-type="bin">
+        <span>🗑️</span>Recycle Bin<small style="opacity:.9;display:block;font-size:11px">(${simState.recycled.length})</small>
+      </div>
+      <div class="ic ${simState.selected === -3 ? "sel" : ""}" data-type="notes">
+        <span>📝</span>Notes.txt
+      </div>
+    `;
+
+    simState.folders.forEach((f, idx) => {
+      h += `
+        <div class="ic ${simState.selected === idx ? "sel" : ""}" data-type="folder" data-idx="${idx}">
+          <span>📁</span>${esc(f)}
+        </div>
+      `;
+    });
+
+    desk.innerHTML = h;
+
+    desk.querySelectorAll(".ic").forEach(n => {
+      const type = n.dataset.type;
+      const idx = +n.dataset.idx;
+
+      n.onclick = (e) => {
+        e.stopPropagation();
+        simState.singleClicked = true;
+        simState.selected = (type === "folder") ? idx : (type === "pc" ? -1 : (type === "bin" ? -2 : -3));
+        simLastAction.textContent = `Last action: Selected "${n.textContent.trim().split('(')[0]}"`;
+        drawDesk();
+        updateTasksUI();
+      };
+
+      n.ondblclick = (e) => {
+        e.stopPropagation();
+        simState.doubleClicked = true;
+        if(type === "notes"){
+          openNotepad();
+        } else if(type === "folder"){
+          renameItem();
+        } else if(type === "bin"){
+          openRecycleBin();
+        } else if(type === "pc"){
+          openExplorer();
+        }
+        drawDesk();
+        updateTasksUI();
+      };
+
+      n.oncontextmenu = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        simState.folderRightClicked = true;
+        simState.selected = (type === "folder") ? idx : (type === "pc" ? -1 : (type === "bin" ? -2 : -3));
+        drawDesk();
+        showContextMenu(e.clientX, e.clientY, type, idx);
+        updateTasksUI();
+      };
+    });
+
+    desk.appendChild(notepadWin);
+    desk.appendChild(calcWin);
+    desk.appendChild(paintWin);
+    desk.appendChild(explorerWin);
+    desk.appendChild(binWin);
+    desk.appendChild(simModal);
+    desk.appendChild(startMenu);
+    updateTaskbarApps();
+  }
+
+  desk.oncontextmenu = (e) => {
+    e.preventDefault();
+    simState.desktopRightClicked = true;
+    simLastAction.textContent = "Last action: Right-clicked on Desktop";
+    showContextMenu(e.clientX, e.clientY, "desk");
+    updateTasksUI();
+  };
+
+  desk.onclick = () => {
+    simState.selected = null;
+    cm.style.display = "none";
+    startMenu.classList.remove("open");
+    startBtn.classList.remove("open");
+    drawDesk();
+  };
+
+  desk.onkeydown = (e) => {
+    if(e.key === "Delete") deleteItem();
+    if(e.key === "F2") renameItem();
+  };
+
+  if(isStandalone){
+    container.querySelector("#simBk").onclick = () => go("courseHome");
+    container.querySelector("#simExport").onclick = () => {
+      const rec = {
+        student: S.user,
+        verified_at: new Date().toISOString(),
+        tasks_verified: tasks.map(t => ({ task: t.desc, status: evaluateSimTask(t.id, simState) ? "VERIFIED" : "INCOMPLETE" })),
+        history: S.log.filter(l => l.e && l.e.startsWith("sim_"))
+      };
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(rec, null, 2)], { type: "application/json" }));
+      a.download = `practice-verification-${S.user.name.replace(/\s+/g, "_")}.json`;
+      a.click();
+    };
+  }
+
+  const updateClock = () => {
+    const clk = container.querySelector("#simClock");
+    if(clk) clk.textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+  updateClock();
+
+  let simAttempts = 1;
+  const existingAssign = (S.assignAttempts || {})[assignmentKey];
+  if(existingAssign && existingAssign.attempts){
+    simAttempts = existingAssign.attempts;
+  }
+
+  function checkAssignmentSubmit(){
+    let doneCount = 0;
+    tasks.forEach(t => {
+      if(evaluateSimTask(t.id, simState)) doneCount++;
+    });
+
+    if(doneCount < tasks.length){
+      simAttempts++;
+      const attemptBadge = container.querySelector("#simAttemptBadge");
+      if(attemptBadge) attemptBadge.textContent = `🎯 प्रयास: ${simAttempts}`;
+      
+      const verifyMsg = container.querySelector("#simVerifyMsg");
+      if(verifyMsg){
+        verifyMsg.innerHTML = `<span style="color:#ef4444;font-weight:800">⚠️ प्रयास #${simAttempts-1} अधूरा: अभी ${tasks.length - doneCount} काम बाकी हैं!</span>`;
+      }
+      playErrorBuzz();
+      
+      const taskEls = container.querySelectorAll(".task-item:not(.done)");
+      taskEls.forEach(el => {
+        el.classList.add("pending-shake");
+        setTimeout(()=>el.classList.remove("pending-shake"), 600);
+      });
+      return false;
+    }
+
+    let stars = 1;
+    let coinsBonus = 10;
+    let title = "Assignment Verified & Completed!";
+    let subtitle = "";
+    if (simAttempts === 1) {
+      stars = 3;
+      coinsBonus = 30;
+      title = "🌟 1st Attempt Master! (शानदार पहले प्रयास में!)";
+      subtitle = "अविश्वसनीय! आपने बिना किसी गलती के पहले ही प्रयास में सारे Tasks सफलतापूर्वक पूरे कर लिए!";
+    } else if (simAttempts === 2) {
+      stars = 2;
+      coinsBonus = 20;
+      title = "🥈 2nd Attempt Clear! (बहुत बढ़िया!)";
+      subtitle = "आपने दूसरे प्रयास में Assignment के सारे काम सफलता से पूरे कर लिए!";
+    } else {
+      stars = 1;
+      coinsBonus = 10;
+      title = "🥉 Verified & Completed! (अभ्यास पूरा किया!)";
+      subtitle = `${simAttempts} प्रयासों के बाद आपने सभी Tasks पूरे कर लिए! लगातार अभ्यास जारी रखें!`;
+    }
+
+    alreadyVerified = true;
+    S.sim_verified = S.sim_verified || {};
+    S.sim_verified[assignmentKey] = {
+      at: new Date().toISOString(),
+      student: S.user ? S.user.name : "Learner",
+      tasks: tasks.map(t => t.desc),
+      attempts: simAttempts,
+      stars
+    };
+    S.assignAttempts = S.assignAttempts || {};
+    S.assignAttempts[assignmentKey] = {
+      attempts: simAttempts,
+      stars,
+      coins: coinsBonus,
+      at: new Date().toISOString()
+    };
+    save();
+    log("sim_assignment_verified", { key: assignmentKey, count: doneCount, attempts: simAttempts, stars, coinsBonus });
+
+    awardCoins(coinsBonus, `${stars} Stars! +${coinsBonus} 🟡`, container.querySelector("#simVerifyBtn"));
+    if(stars === 3) playFanfareSound();
+    else playSuccessChime();
+    launchConfetti();
+
+    showAssignmentModal({
+      title,
+      subtitle,
+      simAttempts,
+      stars,
+      coinsBonus,
+      tasks,
+      onContinue: () => {
+        if(onDone) onDone();
+      }
+    });
+
+    updateTasksUI(true);
+    return true;
+  }
+
+  function updateTasksUI(isDoneTrigger = false){
+    let doneCount = 0;
+    const taskHtml = tasks.map((t, idx) => {
+      const isDone = evaluateSimTask(t.id, simState);
+      if(isDone) doneCount++;
+      return `
+        <div class="task-item ${isDone ? "done" : ""}">
+          <div class="task-item-main">
+            <div class="task-item-desc">
+              <span>${isDone ? "✅" : "⬜"}</span>
+              <span>Task ${idx+1}: ${esc(t.desc)}</span>
+            </div>
+            ${t.hint ? `<div class="task-item-hint">💡 <em>Hint:</em> ${esc(t.hint)}</div>` : ""}
+          </div>
+          <span class="task-badge">${isDone ? "VERIFIED ✅" : "अधूरा 🔒"}</span>
+        </div>
+      `;
+    }).join("");
+
+    simTasksList.innerHTML = taskHtml;
+    simCount.textContent = `${doneCount} / ${tasks.length} पूरे`;
+    const pct = Math.round((doneCount / tasks.length) * 100);
+    simProgress.style.width = pct + "%";
+
+    const attemptBadge = container.querySelector("#simAttemptBadge");
+    if(attemptBadge) attemptBadge.textContent = `🎯 प्रयास: ${simAttempts}`;
+
+    const vBtn = container.querySelector("#simVerifyBtn");
+    const vMsg = container.querySelector("#simVerifyMsg");
+
+    const allPassed = (doneCount === tasks.length);
+    if(allPassed || alreadyVerified){
+      simBanner.className = "sim-lock-banner unlocked";
+      simBannerIcon.textContent = "🎉";
+      simBannerTitle.textContent = "Assignment Verified & Completed!";
+      simBannerSub.textContent = `बधाई! सभी tasks पूरे हो चुके हैं (${simAttempts} प्रयास में)। अगला कदम अनलॉक है! ✅`;
+      simStatusBadge.className = "part-badge done";
+      simStatusBadge.textContent = "VERIFIED ✅";
+      if(vBtn){
+        vBtn.style.background = "#15803d";
+        vBtn.style.color = "#ffffff";
+        vBtn.innerHTML = "<span>✅ Assignment Verified & Submitted ✓</span>";
+      }
+      if(vMsg){
+        vMsg.innerHTML = `<span style="color:#15803d;font-weight:800">🎉 Verified (${simAttempts} प्रयास)</span>`;
+      }
+    } else {
+      simBanner.className = "sim-lock-banner";
+      simBannerIcon.textContent = "🔒";
+      simBannerTitle.textContent = "Real Computer Practice — Mandatory Assignment";
+      simBannerSub.textContent = `जब तक सभी tasks पूरे नहीं होंगे (${doneCount}/${tasks.length} पूर्ण), अगला कदम लॉक रहेगा!`;
+      simStatusBadge.className = "part-badge";
+      simStatusBadge.textContent = "LOCKED 🔒";
+      if(vBtn){
+        vBtn.style.background = "";
+        vBtn.style.color = "";
+        vBtn.innerHTML = "<span>⚡ Verify & Submit Assignment</span>";
+      }
+    }
+  }
+  container.querySelector("#simVerifyBtn").onclick = checkAssignmentSubmit;
+
+  drawDesk();
+  updateTasksUI();
+  if(alreadyVerified && onDone) onDone();
+}
+function lesson(id){
+  const L=ALL.find(l=>l.id===id),N=L.steps.length;CURL=id;S.pos=S.pos||{};let i=Math.min(S.pos[id]||0,N-1);const okS={};
+  if(S.cc===undefined)S.cc=true;
+
+  const partObj=PARTS.find(p=>p.lessons.some(l=>l.id===id));
+  const partName=partObj?partObj.name.split("—")[0].trim():"Part";
+  S.lastLesson=id;save();
+  const realIdx=REAL.findIndex(l=>l.id===id);
+  const prevL=realIdx>0?REAL[realIdx-1]:null;
+  const nextL=realIdx>=0&&realIdx<REAL.length-1?REAL[realIdx+1]:null;
+
+  app.innerHTML=`
+  <div class="lesson-player-wrap">
+    <div class="player-top-header">
+      <div class="player-top-row">
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="lang-pill" id="bkHome" title="Home पर जाएं" style="font-size:15px;padding:3px 8px">🏠</button>
+          <button class="lang-pill" id="langPill" title="भाषा (Language)" style="padding:3px 8px">🌐 अ/A</button>
+          <span class="coin-pill" title="Points (सिक्के)">🟡 <b id="coinCount">${S.coins || (Object.keys(S.done).length * 10)}</b></span>
+          <button class="lang-pill" id="stepBack" title="पिछला कदम (Previous)" style="padding:3px 8px;font-size:15px;font-weight:900;display:none">‹</button>
+        </div>
+        <div class="audio-ctrl-pill">
+          <button class="actrl-btn" id="audioReplay" title="शुरू से सुनो (Replay)">↺</button>
+          <span class="actrl-sep"></span>
+          <button class="actrl-btn" id="audioBack" title="3s पीछे">&lt;</button>
+          <span class="actrl-sep"></span>
+          <button class="actrl-btn" id="audioPlayPause" title="सुनो/रोको (Play/Pause)"><span id="audioPlayPauseIcon">❚❚</span></button>
+          <span class="actrl-sep"></span>
+          <button class="actrl-btn" id="audioFwd" title="3s आगे">&gt;</button>
+          <span class="actrl-sep"></span>
+          <button class="actrl-btn speed-btn" id="speedBtn" title="Speed बदलें">1x</button>
+        </div>
+      </div>
+      <div class="player-sub-row">
+        <div class="level-badge" id="levelBadge" title="${L.id} ${L.title}">Lv. ${L.id} ▾</div>
+        <div class="striped-bar-container" title="Lesson प्रगति">
+          <div class="striped-bar-fill" id="stripedBar" style="width: ${Math.round(((i+1)/N)*100)}%"></div>
+        </div>
+      </div>
+    </div>
+    <section class="stage" id="sg"></section>
+  </div>`;
+
+  const g=$("#sg");
+  $("#bkHome").onclick=()=>go("courseHome");
+  $("#langPill").onclick=()=>{
+    const tip=document.createElement("div");
+    tip.style.cssText="position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#14213d;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;z-index:99;box-shadow:0 4px 12px rgba(0,0,0,0.25);";
+    tip.textContent="भाषा: हिंदी (Language: Hindi)";
+    document.body.appendChild(tip);
+    setTimeout(()=>tip.remove(), 1600);
+  };
+
+  function stepNext(){
+    const rnb=$("#roundNextBtn");
+    if(rnb && (rnb.disabled || rnb.getAttribute("aria-disabled")==="true")){
+      rnb.classList.remove("shake");
+      void rnb.offsetWidth;
+      rnb.classList.add("shake");
+      playErrorBuzz();
+      const simVerifyBtn = $("#simVerifyBtn");
+      if(simVerifyBtn){
+        simVerifyBtn.click();
+      } else {
+        const tip=document.createElement("div");
+        tip.style.cssText="position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#ef4444;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:800;z-index:99;box-shadow:0 4px 12px rgba(0,0,0,0.25);";
+        tip.textContent="🔒 आगे बढ़ने के लिए पहले ऊपर का कार्य / प्रश्न पूरा करें!";
+        document.body.appendChild(tip);
+        setTimeout(()=>tip.remove(), 1600);
+      }
+      return;
+    }
+    if(i===N-1) finish();
+    else { i++; draw(); }
+  }
+  function stepPrev(){
+    if(i>0){ i--; draw(); }
+  }
+
+  $("#audioReplay").onclick=replayAudio;
+  $("#audioBack").onclick=()=>seekAudio(-3);
+  $("#audioPlayPause").onclick=togglePlayPause;
+  $("#audioFwd").onclick=()=>seekAudio(3);
+  $("#speedBtn").onclick=cyclePlaybackSpeed;
+
+  $("#levelBadge").onclick=()=>openLevelSwitcher(L.id);
+
+  function launchConfetti(){
+    const holder=el('<div class="confetti-holder" aria-hidden="true"></div>');
+    const colors=["#ffc233","#1b7f5c","#c0392b","#1d4e89","#2a9d8f","#e76f51"];
+    for(let j=0;j<36;j++){
+      const p=document.createElement("div");
+      p.className="confetti";
+      const bg=colors[Math.floor(Math.random()*colors.length)];
+      const left=Math.random()*100;
+      const size=7+Math.random()*7;
+      const dur=1.8+Math.random()*1.4;
+      const delay=Math.random()*0.35;
+      p.style.cssText=`left:${left}vw;background:${bg};width:${size}px;height:${size*1.3}px;animation-duration:${dur}s;animation-delay:${delay}s;transform:rotate(${Math.random()*360}deg);`;
+      holder.appendChild(p);
+    }
+    document.body.appendChild(holder);
+    setTimeout(()=>holder.remove(),3200);
+  }
+
+  function showCompletionModal(){
+    launchConfetti();
+    const partImg = PART_IMAGES[L.id.split(".")[0]] || "assets/part-01-meet-computer.jpg";
+    const overlay=el(`
+      <div class="modal-overlay">
+        <div class="modal-card" style="border:3px solid #14213d;box-shadow:6px 9px 0 #14213d;border-radius:22px;overflow:hidden;padding:0">
+          <div style="width:100%;height:150px;overflow:hidden;border-bottom:2.5px solid #14213d;background:#efece2">
+            <img src="${partImg}" alt="${esc(L.title)}" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="padding:22px">
+            <div style="font-size:38px;margin-bottom:4px">🎉</div>
+            <h2 style="font-size:24px;margin-bottom:6px">बहुत बढ़िया, ${esc(S.user.name)}!</h2>
+            <p style="color:var(--mut);margin:0 0 16px">आपने <b>${L.id} ${esc(L.title)}</b> पूरा कर लिया है!</p>
+            <div class="modal-actions">
+              ${nextL?`<button class="btn y" id="modalNext" style="border:2px solid #14213d;box-shadow:2px 3px 0 #14213d">अगला Lesson: ${nextL.id} →</button>`:""}
+              <button class="btn o" id="modalHome" style="border:2px solid #14213d">कोर्स Home</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `);
+    document.body.appendChild(overlay);
+    if(nextL) overlay.querySelector("#modalNext").onclick=()=>{overlay.remove();go("lesson",nextL.id)};
+    overlay.querySelector("#modalHome").onclick=()=>{overlay.remove();go("courseHome")};
+  }
+
+  function finish(){
+    const isNew = !S.done[id];
+    S.done[id]={at:new Date().toISOString(),reflection:($("#rf")||{}).value||""};
+    S.lastLesson=id;
+    if(isNew){
+      awardCoins(20, "Lesson Completed! 🎉");
+    }
+    save();
+    log("lesson_done",id);
+    showCompletionModal();
+  }
+
+  function draw(){
+    const s=L.steps[i],last=i===N-1;
+    S.pos[id]=i;save();stopAudio();
+
+    // Update striped progress bar and coin count
+    const bar=$("#stripedBar");
+    if(bar) bar.style.width=`${Math.round(((i+1)/N)*100)}%`;
+    const coins=$("#coinCount");
+    if(coins) coins.textContent=S.coins || (Object.keys(S.done).length*10);
+    const lvBadge=$("#levelBadge");
+    if(lvBadge) lvBadge.textContent=`Lv. ${L.id} ▾`;
+    const sbBtn=$("#stepBack");
+    if(sbBtn){
+      sbBtn.style.display=i>0?"inline-flex":"none";
+      sbBtn.onclick=stepPrev;
+    }
+
+    g.innerHTML="";
+    g.classList.remove("stage-enter");
+    void g.offsetWidth;
+    g.classList.add("stage-enter");
+
+    // Mount interactive activity in upper area
+    const actBox=document.createElement("div");
+    actBox.className="step-activity-box";
+    actBox.style.cssText="width:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;";
+    g.appendChild(actBox);
+
+    const unlockNext=()=>{
+      okS[i]=1;
+      const rnb=$("#roundNextBtn");
+      if(rnb){
+        rnb.disabled=false;
+        rnb.removeAttribute("aria-disabled");
+        rnb.classList.remove("disabled");
+        if(isStepAudioFinished || !s.s){
+          revealNextButton(true);
+        }
+      }
+    };
+
+    const req=R[s.t](actBox,s,unlockNext);
+
+    // Duolingo Neo-Brutalist Karaoke Card
+    const clean=cleanSpeech(s.s);
+    const displayText=clean || s.h || s.p || "";
+    const kCard=el(`
+      <div class="karaoke-card" id="karaokeCard" aria-live="polite">
+        <div id="kWords">${renderKaraokeHtml(displayText)}</div>
+      </div>
+    `);
+    g.appendChild(kCard);
+
+    // Single Round Next Button: shows strictly AFTER audio finishes
+    const speechNeeded = !!s.s && String(s.s).trim().length > 0;
+    const roundNext=el(`
+      <button class="round-next-btn ${speechNeeded ? "hidden-for-audio" : ""}" id="roundNextBtn" title="${last?"Lesson पूरा करो ✓":"आगे बढ़ो (Continue) ›"}" aria-label="${last?"Lesson पूरा करो":"आगे बढ़ो"}">
+        ${last?"✓":"›"}
+      </button>
+    `);
+    g.appendChild(roundNext);
+
+    const isLocked=!!req&&!okS[i];
+    if(roundNext){
+      if(isLocked){
+        roundNext.setAttribute("aria-disabled","true");
+        roundNext.classList.add("disabled");
+      } else {
+        roundNext.removeAttribute("aria-disabled");
+        roundNext.classList.remove("disabled");
+      }
+      roundNext.onclick=stepNext;
+    }
+
+    updateAudioUI();
+    window.scrollTo(0,0);
+    // Always narrate step audio and only reveal continue button after audio completes
+    if(s.s) {
+      isStepAudioFinished = false;
+      speak(s.s,`${id}-${i+1}`);
+    } else {
+      isStepAudioFinished = true;
+      revealNextButton(true);
+    }
+  }
+
+  draw();
+}
+
+/* ============ GLOBAL SHORTCUTS ============ */
+window.addEventListener("keydown",e=>{
+  if(!$("#sg")||!CURL)return;
+  const tag=(document.activeElement&&document.activeElement.tagName)||"";
+  if(tag==="INPUT"||tag==="TEXTAREA"||(document.activeElement&&document.activeElement.isContentEditable))return;
+  if(e.key==="ArrowLeft"){
+    const sbBtn=$("#stepBack");
+    if(sbBtn&&sbBtn.style.display!=="none"){e.preventDefault();sbBtn.click()}
+  }else if(e.key==="ArrowRight"||e.key==="Enter"){
+    const rnb=$("#roundNextBtn");
+    if(rnb&&!rnb.disabled){e.preventDefault();rnb.click()}
+  }else if(e.key==="s"||e.key==="S"||e.key===" "){
+    const pp=$("#audioPlayPause");
+    if(pp){e.preventDefault();pp.click()}
+  }
+});
+
+/* ============ WINDOWS SIMULATOR PRACTICE LAB ============ */
+function sim(){
+  app.innerHTML = "";
+  mountSimulator(app, {
+    standalone: true,
+    id: "standalone",
+    h: "Real Computer Practice Lab",
+    p: "Windows Desktop Simulator में नीचे दिए गए सभी Core Tasks को पूरा करके सत्यापित (Verify) करें:",
+    tasks: [
+      { id: "new_folder", desc: "Desktop पर एक नया Folder बनाओ", hint: "Right Click करके 'New folder' चुनो या ➕ New Folder बटन दबाओ।" },
+      { id: "rename_school", desc: "Folder का नाम बदलकर 'School' या 'Notes' रखो", hint: "Folder पर Double Click करो या Right Click करके Rename चुनो।" },
+      { id: "user_folder", desc: `अपने नाम (${S.user ? S.user.name : "Learner"}) से एक Folder बनाओ`, hint: "नया folder बनाकर उस पर अपना नाम लिखो।" },
+      { id: "open_start", desc: "Start Menu (⊞ Start) खोलकर देखो", hint: "Taskbar पर ⊞ Start बटन पर Click करो।" },
+      { id: "open_notepad", desc: "Start Menu से Notepad खोलो और कम से कम 5 अक्षर टाइप करो", hint: "Start Menu में Notepad पर click करो और टाइप करो।" },
+      { id: "delete_folder", desc: "किसी Folder को Delete करके Recycle Bin में भेजो", hint: "Folder select करो और Delete key या 🗑 Delete बटन दबाओ।" },
+      { id: "refresh", desc: "Desktop पर Right Click करके 'Refresh' करो", hint: "Desktop पर Right Click करके Refresh चुनो या 🔄 Refresh बटन दबाओ।" }
+    ]
+  });
+}
+
+/* ============ ROUTER & INIT ============ */
+const hm=$("#home");
+if(hm){
+  hm.onclick=()=>S.user&&go("courseHome");
+  hm.onkeydown=e=>{if(e.key==="Enter")hm.click()};
+}
+
+// Browser Back/Forward navigation listener (HTML5 History API)
+window.addEventListener("popstate", () => {
+  applyRoute();
+});
+
+// Also support hash change if old bookmark is opened
+window.addEventListener("hashchange", () => {
+  applyRoute();
+});
+
+// Initial route execution
+applyRoute();
+</script>
+<!-- PWA Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then((reg) => {
+      console.log('[PWA] Service Worker registered for offline use:', reg.scope);
+    }).catch((err) => {
+      console.warn('[PWA] Service Worker registration failed:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
